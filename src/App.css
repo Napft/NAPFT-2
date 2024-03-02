@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman&family=Kanit:wght@300;400&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo{
+  background-image: url(./assets/logo.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#nav{
+  font-family: "Open Sans", sans-serif;
+} 
+
+.img{
+  background-image: url(./assets/heroimg.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.av{
+  background-image: url(./assets/download.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#hero-imgsec{
+  box-shadow: 0 0 40px #387ADF;
+  animation: updown 2s linear infinite;
+}
+#herotext{
+  font-family:"Open Sans", sans-serif;
+}
+
+@keyframes updown{
+  0%{
+    transform: translateY(-2%);
+  }
+  50%{
+    transform: translateY(2%);
+  }
+  100%{
+    transform: translateY(-2%);
+  }
+}
+
+
+#swiper{
+  box-shadow: 0 0 50px 10px #387ADF;
+}
+
+.rec1{
+  background-image: url(./assets/nft-1.jpeg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+.rec2{
+  background-image: url(./assets/nft-2.jpeg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.rec3{
+  background-image: url(./assets/nft-3.jpeg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
