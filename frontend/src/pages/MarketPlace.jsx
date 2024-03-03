@@ -13,7 +13,7 @@ const MarketPlace = () => {
   
 
   return (
-    <div className='text-center pt-8'>
+    <div className='text-center pt-8 pb-[80px]'>
     
      <h1 className='text-white text-5xl font-semibold'>Our featured NFTs</h1>
 
@@ -30,22 +30,22 @@ const MarketPlace = () => {
     navigation={true}
     modules={[Autoplay, Pagination, Navigation]}
     
-    className='p-4 h-[60vh] w-[90%] my-5 rounded-2xl'
-    id='swiper'
+    className='p-4 h-[60vh] max-w-fit my-5 rounded-2xl'
+    id='swiper2'
     >
       <SwiperSlide>
         <div
-          className="rec1 h-full relative  flex flex-col justify-center items-center text-white"
+          className="rec1 h-full relative  flex flex-col justify-center items-center text-white "
           
         >
           <div className="absolute inset-0 bg-black opacity-60"></div>
           <h2 className="text-4xl mb-4 z-10">first nft</h2>
-          <p className="text-lg lg:text-xl mb-6 z-10 ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est nam, qui maxime fuga totam et omnis rerum quam aperiam quasi.</p>
+          <p className="text-lg lg:text-xl mb-6 z-10 ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est nam, qui maxime fuga totam.</p>
           
           <button className="bg-blue-500 hover:bg-blue-700 z-10 text-white font-bold py-2 px-4 rounded">
             Buy
-          </button>
-        </div>
+          </button></div>
+       
       </SwiperSlide>
 
       <SwiperSlide>
