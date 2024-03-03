@@ -1,23 +1,67 @@
+import styled from "styled-components";
 
+const FooterDiv = styled.div`
+  background-color: #1c1f2b;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px;
+`;
 
-const footer = () => {
-  let NavItems = ['Home' , 'MarketPlace' , 'AboutUs' , 'PersonalPage']
+const LogoDiv = styled.div`
+  width: 120px;
+  height: 100px;
+`;
+
+const Paragraph = styled.p`
+  letter-spacing: 0.15em;
+  font-weight: bold;
+  color: gray;
+  font-size: 0.8rem;
+`;
+const Items = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+`;
+
+const ItemSpan = styled.div`
+  color: gray;
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+`;
+
+const PReserved = styled.p`
+  color: gray;
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+`;
+
+const Footer = () => {
+  let NavItems = ["Home", "MarketPlace", "AboutUs", "PersonalPage"];
   return (
-  <div className="bg-black flex flex-col px-3 gap-6 lg:flex-row lg:gap-0 lg:px-0 lg:justify-around lg:items-center py-5 mt-2">
-     <div>
-      <div className="logo w-24 h-16"></div>
-      <p className="text-slate-300 text-lg font-thin">A MarketPlace for newgen creators!!</p>
-    </div>
-    <div className="flex flex-col gap-3">
-      {NavItems.map((x , index) =>(
-        <span key={index} className="text-white hover:font-semibold cursor-pointer">{x}</span>
-      ))}
-    </div>
+    <FooterDiv>
+      <div>
+        <LogoDiv className="logo" />
+        <Paragraph>A MarketPlace for newgen creators!</Paragraph>
+      </div>
+      <Items>
+        {NavItems.map((x, index) => (
+          <ItemSpan key={index}>{x}</ItemSpan>
+        ))}
+      </Items>
 
-    <div className="text-slate-300 text-md mx-auto lg:mx-0">@2024 All Rights Reserved</div>
-  </div>
-    
-  )
-}
+      <PReserved>
+        &copy; {new Date().getFullYear()} NapFT. All rights reserved
+      </PReserved>
+    </FooterDiv>
+  );
+};
 
-export default footer
+export default Footer;

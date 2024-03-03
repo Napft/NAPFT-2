@@ -50,12 +50,17 @@
 
 
 #swiper{
-  box-shadow: 0 0 50px 10px #387ADF;
+  width: 50%;
+  height: max-content;
+  border-radius: 20px;
+  border: 1px solid #176cebed;
+  padding: 30px;
+  align-items: center;
+  text-align: center;
 }
 
 .rec1{
   background-image: url(./assets/nft-1.jpeg);
-  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   
