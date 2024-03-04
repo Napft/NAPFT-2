@@ -1,79 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Goldman&family=Kanit:wght@300;400&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Goldman&family=Kanit:wght@300;400&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.logo{
+.logo {
   background-image: url(./assets/logo.png);
   background-size: cover;
   background-position: center;
 }
 
-#nav{
+#nav {
   font-family: "Open Sans", sans-serif;
-} 
+}
 
-.img{
+.img {
   background-image: url(./assets/heroimg.png);
   background-size: cover;
   background-position: center;
 }
 
-.av{
+.av {
   background-image: url(./assets/download.png);
   background-size: cover;
   background-position: center;
 }
 
-#hero-imgsec{
-  box-shadow: 0 0 40px #387ADF;
+#hero-imgsec {
+  box-shadow: 0 0 40px #387adf;
   animation: updown 2s linear infinite;
 }
-#herotext{
-  font-family:"Open Sans", sans-serif;
+#herotext {
+  font-family: "Open Sans", sans-serif;
 }
 
-@keyframes updown{
-  0%{
+@keyframes updown {
+  0% {
     transform: translateY(-2%);
   }
-  50%{
+  50% {
     transform: translateY(2%);
   }
-  100%{
+  100% {
     transform: translateY(-2%);
   }
 }
 
-
-#swiper{
-  width: 50%;
-  height: max-content;
-  border-radius: 20px;
-  border: 1px solid #176cebed;
-  padding: 30px;
-  align-items: center;
-  text-align: center;
+#swiper {
+    width: 50%;
+    height: max-content;
+    border-radius: 20px;
+    border: 1px solid #176cebed;
+    padding: 30px;
+    align-items: center;
+    text-align: center;
+  
+    @media screen and (max-width: 768px) {
+      width: 80%;
+      height: auto;
+    }
+  
+    @media screen and (max-width: 450px) {
+      width: 90%;
+      height: 20rem;
+    }
+  
 }
 
-.rec1{
+.rec1 {
   background-image: url(./assets/nft-1.jpeg);
   background-position: center;
   background-repeat: no-repeat;
-  
 }
-.rec2{
+.rec2 {
   background-image: url(./assets/nft-2.jpeg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.rec3{
+.rec3 {
   background-image: url(./assets/nft-3.jpeg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.nav{
+  display: none;
+  @media screen and (max-width: 450px) {
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: aliceblue;
+  }
+}
+
+.nav-icon{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
 }

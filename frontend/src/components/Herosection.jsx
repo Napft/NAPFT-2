@@ -12,6 +12,10 @@ const HeroDiv = styled.div`
   padding: 10px;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 450px) {
+    height: 90vh;
+    padding: 40px 10px 0;
+  }
 `;
 
 const Paragraph = styled.p`
@@ -46,6 +50,9 @@ const Paragraph = styled.p`
       border-color: none;
     }
   }
+  @media screen and (max-width: 450px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const TextDiv = styled.div`
@@ -62,6 +69,10 @@ const H1 = styled.h1`
   line-height: 4rem;
   font-size: 4rem;
   padding: 15px 0;
+  @media screen and (max-width: 450px) {
+    line-height: 2.2rem;
+    font-size: 2rem;
+  }
 `;
 const ButtonDiv = styled.div`
   justify-content: center;
@@ -76,6 +87,9 @@ const Button = styled.button`
   border-radius: 25px;
   color: white;
   padding: 5px 25px;
+  @media screen and (max-width: 450px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const VideoCardDiv = styled.div`
@@ -85,6 +99,10 @@ const VideoCardDiv = styled.div`
   width: auto;
   height: 80vh;
   margin-bottom: 12rem;
+  @media screen and (max-width: 450px) {
+    height: 70vh;
+    margin-bottom: 5rem;
+  }
 `;
 
 const Herosection = () => {

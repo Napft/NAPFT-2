@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -15,6 +15,11 @@ const SliderDiv = styled.div`
   text-align: center;
   margin: 5px 0;
   height: 80vh;
+  @media screen and (max-width: 450px) {
+    height: 70vh;
+    margin: 3px 0;
+  }
+
 `;
 
 const H1 = styled.h1`
@@ -33,6 +38,10 @@ const InnerDiv = styled.div`
   align-items: center;
   padding: 2px 22px;
   color: white;
+
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+  }
 `;
 
 const H2 = styled.h2`
@@ -41,12 +50,19 @@ const H2 = styled.h2`
   font-weight: 700;
   text-transform: uppercase;
   z-index: 10px;
-  background-attachment: fixed;
+  @media screen and (max-width: 450px) {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
 `;
 const Paragraph = styled.p`
   text-align: center;
   margin: 10px 0;
   font-size: 15px;
+  @media screen and (max-width: 450px) {
+    margin: 5px 0;
+    font-size: 10px;
+  }
 `;
 const ButtonSec = styled.button`
   background-color: none;
@@ -65,11 +81,19 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 20px;
+  @media screen and (max-width: 450px) {
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+  }
 `;
 
 const TextDiv = styled.div`
   display: grid;
-  padding:  0 20px;
+  padding: 0 20px;
+  @media screen and (max-width: 450px) {
+    padding: 5px 8px;
+  }
 `;
 
 const Slider = () => {

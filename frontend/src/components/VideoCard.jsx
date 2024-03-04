@@ -9,7 +9,9 @@ const Video = styled.div`
   position: relative;
   width: 90%;
   height: 80vh;
-  /* margin-bottom: 10rem; */
+  @media screen and (max-width: 450px) {
+    height: 60vh;
+  }
 `;
 const VideoContainer = styled.video`
   opacity: 40%;
@@ -28,7 +30,6 @@ const ContentOverlay = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: white;
 `;
 const H1 = styled.h1`
   color: white;
@@ -36,6 +37,10 @@ const H1 = styled.h1`
   line-height: 4rem;
   font-size: 3.2rem;
   padding: 15px 0;
+  @media screen and (max-width: 450px) {
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+  }
 `;
 const Paragraph = styled.p`
   overflow: hidden;
@@ -47,6 +52,9 @@ const Paragraph = styled.p`
   color: #e4d4d4;
   margin-top: 2px;
   font-size: 1.6rem;
+  @media screen and (max-width: 450px) {
+    font-size: 0.9rem;
+  }
 `;
 const ButtonDiv = styled.div`
   display: flex;
@@ -70,6 +78,10 @@ const Button = styled.button`
     color: #176cebed;
     border: 1px solid #176cebed;
   }
+  @media screen and (max-width: 450px) {
+    font-size: 0.9rem;
+    padding: 15px 30px;
+  }
 `;
 
 const VideoCard = () => {
@@ -84,7 +96,14 @@ const VideoCard = () => {
         <H1>Step into the Digital gallery</H1>
         <Paragraph>
           Innovate, Create,{" "}
-          <strong style={{ color: "blue", fontSize: "2rem" }}>nft</strong>{" "}
+          <strong
+            style={{
+              color: "blue",
+              fontSize: "2rem",
+            }}
+          >
+            nft
+          </strong>{" "}
         </Paragraph>
         <ButtonDiv>
           <Button>

@@ -6,11 +6,22 @@ const FooterDiv = styled.div`
   justify-content: space-evenly;
   align-items: center;
   padding: 30px;
+  @media screen and (max-width: 450px) {
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 30px 20px 40px;
+
+  }
 `;
 
 const LogoDiv = styled.div`
   width: 120px;
   height: 100px;
+  @media screen and (max-width: 450px) {
+    width: 100px;
+    height: 60px;
+  }
 `;
 
 const Paragraph = styled.p`
@@ -25,6 +36,11 @@ const Items = styled.div`
   justify-content: center;
   align-items: center;
   gap: 12px;
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+    gap: 5px;
+    margin: 10px 0;
+  }
 `;
 
 const ItemSpan = styled.div`
@@ -41,16 +57,29 @@ const PReserved = styled.p`
     color: white;
     cursor: pointer;
   }
+  @media screen and (max-width: 450px) {
+    margin-top: 12px;
+  }
 `;
+
+const LogoCommon = styled.div`
+  @media screen and (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+`
 
 const Footer = () => {
   let NavItems = ["Home", "MarketPlace", "AboutUs", "PersonalPage"];
   return (
     <FooterDiv>
-      <div>
+      <LogoCommon>
         <LogoDiv className="logo" />
         <Paragraph>A MarketPlace for newgen creators!</Paragraph>
-      </div>
+      </LogoCommon>
       <Items>
         {NavItems.map((x, index) => (
           <ItemSpan key={index}>{x}</ItemSpan>

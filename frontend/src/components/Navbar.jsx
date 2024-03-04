@@ -1,13 +1,18 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { FaGripLines } from "react-icons/fa6";
+import { useState } from "react";
 
 const HomeDiv = styled.div`
   background-color: #1c1f2b;
   position: fixed;
   width: 100%;
   z-index: 1000;
+  @media screen and (max-width: 450px) {
+    height: max-content;
+    padding: 10px;
+    width: 100%;
+  }
 `;
 
 const HomeContainer = styled.div`
@@ -16,6 +21,9 @@ const HomeContainer = styled.div`
   width: 100%;
   margin: 2px;
   padding: 10px 0px;
+  @media screen and (max-width: 450px) {
+    display: none;
+  }
 `;
 
 const LogoDiv = styled.div`
@@ -24,6 +32,18 @@ const LogoDiv = styled.div`
   margin-right: 5px;
   padding: 0;
 `;
+
+const LogoDiv1 = styled.div`
+  display: none;
+  @media screen and (max-width: 450px) {
+    display: block;
+    width: 80px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+  }
+`;
+
 const NavItem = styled.div`
   display: flex;
   justify-content: space-between;
@@ -49,6 +69,12 @@ const ButtonDiv = styled.div`
   gap: 14px;
   margin-left: 1px;
   padding-left: 0;
+  @media screen and (max-width: 450px) {
+    display: flex;
+    gap: 0px;
+    margin: 15px;
+    justify-content: space-between;
+  }
 `;
 
 const InnerButton = styled.button`
@@ -58,8 +84,37 @@ const InnerButton = styled.button`
   color: white;
   padding: 5px 25px;
 `;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 240px;
+  background-color: #1c1f2b;
+`;
+
+const DropdownItem = styled.div`
+  color: gray;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 10px;
+  &:hover {
+    color: white;
+  }
+`;
+
+const SmallScreen = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+`;
+
 const Navbar = () => {
-  let [disp, setdisp] = useState(true);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   let NavItems = ["Home", "MarketPlace", "AboutUs", "PersonalPage"];
   return (
@@ -82,46 +137,36 @@ const Navbar = () => {
               <InnerButton>Mint your NFT</InnerButton>
             </Link>
           </ButtonDiv>
-
-          <AiOutlineMenu
-            className="text-white text-2xl font-bold lg:hidden"
-            onClick={() => {
-              setdisp(!disp);
-            }}
-          />
         </HomeContainer>
+        <SmallScreen>
+          <LogoDiv1 className="logo"></LogoDiv1>
+          <div className="nav-icon">
+            <FaGripLines
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="nav"
+            />
+
+            {isDropdownOpen && (
+              <DropdownMenu>
+                {NavItems.map((x, index) => (
+                  <Link
+                    key={index}
+                    to={x === "Home" ? "/" : `/${x.toLowerCase()}`}
+                  >
+                    <DropdownItem>{x}</DropdownItem>
+                  </Link>
+                ))}
+                <ButtonDiv>
+                  <InnerButton>Connect Wallet</InnerButton>
+                  <Link to="/mint">
+                    <InnerButton>Mint your NFT</InnerButton>
+                  </Link>
+                </ButtonDiv>
+              </DropdownMenu>
+            )}
+          </div>
+        </SmallScreen>
       </HomeDiv>
-
-      {/* <div className={`bg-black h-screen ${disp && "hidden"}`}>
-        <div
-          className="flex flex-col items-start w-[93%] mx-auto py-3 gap-4"
-          id="nav"
-        >
-          <div className="flex flex-col  gap-5">
-            {NavItems.map((x, index) => (
-              <Link key={index} to={x == "Home" ? "/" : `/${x.toLowerCase()}`}>
-                <span
-                  className="text-white hover:font-semibold cursor-pointer ease-in duration-200"
-                  onClick={() => {
-                    setdisp(true);
-                  }}
-                >
-                  {x}
-                </span>
-              </Link>
-            ))}
-          </div>
-
-          <div className="gap-2 flex flex-col w-full ">
-            <button className="bg-gradient-to-r from-red-500 to bg-purple-500 hover:from-purple-500 to hover:bg-red-500 text-white p-3 rounded-full font-light ease-in duration-500 w-full">
-              Connect Wallet
-            </button>
-            <button className="bg-gradient-to-r from-red-500 to bg-purple-500 hover:from-purple-500 to hover:bg-red-500 text-white p-3 rounded-full font-light ease-in duration-500 w-full">
-              Mint your NFT
-            </button>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 };

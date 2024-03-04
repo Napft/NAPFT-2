@@ -11,6 +11,7 @@ const MintDiv = styled.div`
   justify-content: center;
   align-items: center;
   gap: 40px;
+
 `;
 
 const MintForm = styled.form`
@@ -21,6 +22,9 @@ const MintForm = styled.form`
   border-radius: 10px;
   border: 1px solid blue;
   cursor: pointer;
+  @media screen and (max-width: 450px) {
+    width: 90%;
+  }
 `;
 
 const FormField = styled.div`
