@@ -25,7 +25,7 @@ const SingleNFTcard = () => {
   //   </Card>
 
   
-     <div className="text-left w-80 overflow-hidden cursor-pointer shadow-lg shadow-blue-400 rounded-xl" >
+   <Link to='/nftdetails'><div className="text-left w-80 overflow-hidden cursor-pointer shadow-lg shadow-blue-400 rounded-xl" >
       <div className="w-full h-72 overflow-hidden">
       <img src={nft} className="w-full hover:scale-110 h-[100%] ease-in-out duration-500"/>
       </div>
@@ -36,7 +36,7 @@ const SingleNFTcard = () => {
       </div>
       
       <button className="bg-slate-800 w-full py-2 text-white text-lg hover:bg-slate-900">Buy</button>
-     </div>
+     </div></Link>  
   
   )
 }
