@@ -11,7 +11,7 @@ import Mint from "./pages/Mint";
 export default function App() {
   return (
     <div className="bg-black">
-      <Navbar />
+       <Navbar />
       <Routes>
         <Route path="/" element={<Herosection />}></Route>
         <Route path="/marketplace" element={<MarketPlace />}></Route>
@@ -19,7 +19,7 @@ export default function App() {
         <Route path="/aboutus" element={<About/>}></Route>
         <Route path="/nftdetails" element={<NFTdetails/>}></Route>
       </Routes>
-      <Footer />
+       <Footer />
     </div>
   );
 }
