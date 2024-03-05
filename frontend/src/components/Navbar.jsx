@@ -8,7 +8,7 @@ const HomeDiv = styled.div`
   position: fixed;
   width: 100%;
   z-index: 1000;
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 900px) {
     height: max-content;
     padding: 10px;
     width: 100%;
@@ -21,7 +21,7 @@ const HomeContainer = styled.div`
   width: 100%;
   margin: 2px;
   padding: 10px 0px;
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 900px) {
     display: none;
   }
 `;
@@ -35,7 +35,7 @@ const LogoDiv = styled.div`
 
 const LogoDiv1 = styled.div`
   display: none;
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 900px) {
     display: block;
     width: 80px;
     height: 60px;
@@ -69,7 +69,7 @@ const ButtonDiv = styled.div`
   gap: 14px;
   margin-left: 1px;
   padding-left: 0;
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 900px) {
     display: flex;
     gap: 0px;
     margin: 15px;
@@ -116,7 +116,7 @@ const SmallScreen = styled.div`
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  let NavItems = ["Home", "MarketPlace", "AboutUs", "PersonalPage"];
+  let NavItems = ["Home", "MarketPlace", "AboutUs", "Profile"];
   return (
     <>
       <HomeDiv>
