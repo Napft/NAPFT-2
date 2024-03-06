@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Grid } from "@mui/material";
+
 import nft from '../assets/nft-1.jpeg'
 import { Link } from "react-router-dom"; 
 
