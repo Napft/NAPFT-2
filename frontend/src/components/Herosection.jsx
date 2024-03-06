@@ -97,8 +97,8 @@ const VideoCardDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: auto;
-  height: 80vh;
-  margin-bottom: 12rem;
+  height: 170vh;
+  margin-bottom: 0;
   @media screen and (max-width: 450px) {
     height: 70vh;
     margin-bottom: 5rem;

@@ -9,17 +9,17 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import nftImage from "../assets/nft-1.jpeg";
 import nftImage2 from "../assets/nft-2.jpeg";
+import { Link } from "react-router-dom";
 
 const SliderDiv = styled.div`
   align-items: center;
   text-align: center;
   margin: 5px 0;
-  height: 80vh;
+  height: 70vh;
   @media screen and (max-width: 450px) {
     height: 70vh;
     margin: 3px 0;
   }
-
 `;
 
 const H1 = styled.h1`
@@ -44,55 +44,14 @@ const InnerDiv = styled.div`
   }
 `;
 
-const H2 = styled.h2`
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  z-index: 10px;
-  @media screen and (max-width: 450px) {
-    font-size: 1.2rem;
-    font-weight: 700;
-  }
-`;
-const Paragraph = styled.p`
-  text-align: center;
-  margin: 10px 0;
-  font-size: 15px;
-  @media screen and (max-width: 450px) {
-    margin: 5px 0;
-    font-size: 10px;
-  }
-`;
-const ButtonSec = styled.button`
-  background-color: none;
-  border: 1px white solid;
-  color: white;
-  font-size: 1rem;
-  border-radius: 25px;
-  margin: 20px;
-  padding: 3px 25px;
-  &:hover {
-    color: #176cebed;
-    border: 1px solid #176cebed;
-  }
-`;
 const Image = styled.img`
   width: 100%;
-  height: 100%;
+  height: 50%;
   border-radius: 20px;
   @media screen and (max-width: 450px) {
     width: 100%;
-    height: 160px;
+    height: max-content;
     border-radius: 12px;
-  }
-`;
-
-const TextDiv = styled.div`
-  display: grid;
-  padding: 0 20px;
-  @media screen and (max-width: 450px) {
-    padding: 5px 8px;
   }
 `;
 
@@ -120,46 +79,16 @@ const Slider = () => {
       >
         <SwiperSlide>
           <InnerDiv>
-            <div>
+            <Link to={"/marketplace"}>
               <Image src={nftImage} alt="image" />
-            </div>
-            <TextDiv>
-              <div>
-                <H2>first nft</H2>
-              </div>
-              <div>
-                <Paragraph>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est
-                  nam, qui maxime fuga totam et omnis rerum quam aperiam quasi.
-                </Paragraph>
-              </div>
-
-              {/* <div>
-                <ButtonSec>Buy</ButtonSec>
-              </div> */}
-            </TextDiv>
+            </Link>
           </InnerDiv>
         </SwiperSlide>
         <SwiperSlide>
           <InnerDiv>
-            <div>
+            <Link to={"/marketplace"}>
               <Image src={nftImage2} alt="image" />
-            </div>
-            <TextDiv>
-              <div>
-                <H2>second nft</H2>
-              </div>
-              <div>
-                <Paragraph>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est
-                  nam, qui maxime fuga totam et omnis rerum quam aperiam quasi.
-                </Paragraph>
-              </div>
-
-              {/* <div>
-                <ButtonSec>Buy</ButtonSec>
-              </div> */}
-            </TextDiv>
+            </Link>
           </InnerDiv>
         </SwiperSlide>
       </Swiper>

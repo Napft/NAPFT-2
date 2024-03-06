@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import React from "react";
+import { useState } from "react";
 
 const MintDiv = styled.div`
   width: 100%;
@@ -11,7 +12,6 @@ const MintDiv = styled.div`
   justify-content: center;
   align-items: center;
   gap: 40px;
-
 `;
 
 const MintForm = styled.form`
@@ -20,7 +20,7 @@ const MintForm = styled.form`
   background-color: #1c1f2b;
   color: white;
   border-radius: 10px;
-  border: 1px solid blue;
+  border: 1px solid #444546;
   cursor: pointer;
   @media screen and (max-width: 450px) {
     width: 90%;
@@ -101,6 +101,33 @@ const Mint = () => {
     Aos.init({ duration: 1500 });
   }, []);
 
+  //state management
+  const [file, setFile] = useState(); // State to store the uploaded file
+  const [preview, setPreview] = useState(); // State to store the preview image URL
+
+  // Handle file change event
+  function handleChange(e) {
+    const selectedFile = e.target.files[0]; // Get the first file from the input
+
+    // If a file is selected
+    if (selectedFile) {
+      // Set the file state
+      setFile(selectedFile);
+
+      // Create a file reader
+      const reader = new FileReader();
+
+      // Define a callback function to be executed when the reader loads the file
+      reader.onloadend = () => {
+        // Set the preview state to the URL of the loaded file
+        setPreview(reader.result);
+      };
+
+      // Read the file as a data URL (base64 encoded string)
+      reader.readAsDataURL(selectedFile);
+    }
+  }
+
   return (
     <MintDiv data-aos="zoom">
       <Paragraph>
@@ -108,6 +135,19 @@ const Mint = () => {
         <strong style={{ color: "blue", fontSize: "2.5rem" }}>NFT</strong>
       </Paragraph>
       <MintForm onSubmit={handleSubmit}>
+        {preview && (
+          <img
+            src={preview}
+            alt="Preview"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "200px",
+              marginTop: "10px",
+              borderRadius: "5px",
+              
+            }}
+          />
+        )}
         <FormField>
           <Label htmlFor="title">Title</Label>
           <Input type="text" id="title" name="title" required />
@@ -123,6 +163,7 @@ const Mint = () => {
             id="file"
             name="file"
             accept="image/*, video/*"
+            onChange={handleChange}
             required
           />
         </FormField>
@@ -141,6 +182,7 @@ const Mint = () => {
             required
           />
         </FormField>
+
         <Button type="submit">Mint NFT</Button>
       </MintForm>
     </MintDiv>

@@ -1,12 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Goldman&family=Kanit:wght@300;400&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-<<<<<<< HEAD
-* {
-=======
-@import url('https://fonts.googleapis.com/css2?family=Goldman&family=Kanit:wght@300;400&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Permanent+Marker&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Goldman&family=Kanit:wght@300;400&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Permanent+Marker&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
-*{
->>>>>>> ddffefac0322075e1a7410e7ad108bd567ce2d96
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -55,24 +51,23 @@
 }
 
 #swiper {
-    width: 50%;
-    height: max-content;
-    border-radius: 20px;
-    border: 1px solid #176cebed;
-    padding: 30px;
-    align-items: center;
-    text-align: center;
-  
-    @media screen and (max-width: 768px) {
-      width: 80%;
-      height: auto;
-    }
-  
-    @media screen and (max-width: 450px) {
-      width: 90%;
-      height: 20rem;
-    }
-  
+  width: 50%;
+  height: max-content;
+  border-radius: 20px;
+  border: 1px solid #176cebed;
+  padding: 30px;
+  align-items: center;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    height: auto;
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 90%;
+    height: 20rem;
+  }
 }
 
 .rec1 {
@@ -94,8 +89,7 @@
   background-repeat: no-repeat;
 }
 
-<<<<<<< HEAD
-.nav{
+.nav {
   display: none;
   @media screen and (max-width: 450px) {
     display: block;
@@ -105,15 +99,23 @@
   }
 }
 
-.nav-icon{
+.nav-icon {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
 
-=======
-#aboutdiv{
+#aboutdiv {
   font-family: "Work Sans", sans-serif;
   font-optical-sizing: auto;
-  
->>>>>>> ddffefac0322075e1a7410e7ad108bd567ce2d96
+}
+
+.icon{
+  height: 30px;
+  width: 30px;
+  color: gray;
+}
+
+.icon:hover{
+  color: white;
 }

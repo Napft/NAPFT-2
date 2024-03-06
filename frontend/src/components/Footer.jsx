@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { RiInstagramFill } from "react-icons/ri";
+import { FaLinkedin } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const FooterDiv = styled.div`
   background-color: #1c1f2b;
@@ -11,7 +16,6 @@ const FooterDiv = styled.div`
     flex-direction: column;
     gap: 5px;
     padding: 30px 20px 40px;
-
   }
 `;
 
@@ -43,6 +47,19 @@ const Items = styled.div`
   }
 `;
 
+const Socials = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  @media screen and (max-width: 450px) {
+    gap: 5px;
+    margin: 10px 0;
+  }
+`;
+
 const ItemSpan = styled.div`
   color: gray;
   &:hover {
@@ -68,9 +85,8 @@ const LogoCommon = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
   }
-`
+`;
 
 const Footer = () => {
   let NavItems = ["Home", "MarketPlace", "AboutUs", "PersonalPage"];
@@ -85,6 +101,28 @@ const Footer = () => {
           <ItemSpan key={index}>{x}</ItemSpan>
         ))}
       </Items>
+      <Socials>
+        <Link to={"https://x.com/Napftofficial?s=20"} target="_blank">
+          <FaSquareXTwitter className="icon" />
+        </Link>
+        <Link
+          to={
+            "https://www.instagram.com/napft_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          }
+          target="_blank"
+        >
+          <RiInstagramFill className="icon" />
+        </Link>
+        <Link
+          to={"https://www.linkedin.com/company/napft-technology/"}
+          target="_blank"
+        >
+          <FaLinkedin className="icon" />
+        </Link>
+        <a href="mailto:mail.napft@gmail.com">
+          <MdEmail className="icon" />
+        </a>{" "}
+      </Socials>
 
       <PReserved>
         &copy; {new Date().getFullYear()} NapFT. All rights reserved
