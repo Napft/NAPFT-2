@@ -93,18 +93,26 @@ const Paragraph = styled.p`
 `;
 
 const Mint = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-  };
   React.useEffect(() => {
     Aos.init({ duration: 1500 });
   }, []);
 
   //state management
-  const [file, setFile] = useState(); // State to store the uploaded file
+  const [file, setFile] = useState(""); // State to store the uploaded file
   const [preview, setPreview] = useState(); // State to store the preview image URL
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Mint completed");
+    setFile("");
+    setPreview("");
+    setTitle("");
+    setDescription("");
+    setPrice("");
+  };
   // Handle file change event
   function handleChange(e) {
     const selectedFile = e.target.files[0]; // Get the first file from the input
@@ -144,17 +152,16 @@ const Mint = () => {
               maxHeight: "200px",
               marginTop: "10px",
               borderRadius: "5px",
-              
             }}
           />
         )}
         <FormField>
           <Label htmlFor="title">Title</Label>
-          <Input type="text" id="title" name="title" required />
+          <Input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
         </FormField>
         <FormField>
           <Label htmlFor="description">Description</Label>
-          <TextArea id="description" name="description" rows="4" required />
+          <TextArea id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} rows="4" required />
         </FormField>
         <FormField>
           <Label htmlFor="file">Upload File</Label>
@@ -169,7 +176,7 @@ const Mint = () => {
         </FormField>
         <FormField>
           <Label htmlFor="price">Price</Label>
-          <Input type="number" id="price" name="price" required />
+          <Input type="number" id="price" name="price" value={price} onChange={(e) => setPrice(e.target.value)} required />
         </FormField>
         <FormField>
           <Label htmlFor="chain">Chain</Label>
