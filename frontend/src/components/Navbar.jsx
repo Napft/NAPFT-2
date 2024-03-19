@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaGripLines } from "react-icons/fa6";
 import { useState } from "react";
+import { truncate } from '../store/index';
+import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
 
 const HomeDiv = styled.div`
   background-color: #1c1f2b;
@@ -114,8 +116,11 @@ const SmallScreen = styled.div`
 `;
 
 const Navbar = () => {
+  const {
+    connectedAccount,
+    connectWallet,
+  } = useNFTMarketplace();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   let NavItems = ["Home", "MarketPlace", "AboutUs", "Profile"];
   return (
     <>
@@ -132,7 +137,7 @@ const Navbar = () => {
           </NavItem>
 
           <ButtonDiv>
-            <InnerButton>Connect Wallet</InnerButton>
+          {connectedAccount ? <InnerButton>{truncate(connectedAccount, 4, 4, 11)}</InnerButton> : <InnerButton onClick={connectWallet}>Connect Wallet</InnerButton>}
             <Link to="/mint">
               <InnerButton>Mint your NFT</InnerButton>
             </Link>
