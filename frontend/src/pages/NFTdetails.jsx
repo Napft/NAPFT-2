@@ -4,12 +4,16 @@ import { FaRegHeart } from "react-icons/fa";
 import chainlogo from '../assets/polygon.png'
 import { useState } from 'react';
 import { SlGraph } from "react-icons/sl";
+import { motion } from 'framer-motion';
 
 const NFTdetails = () => {
   let[like , uplike] = useState(1)
   return (
+    <>
     <div className=' pt-[120px] lg:pt-[100px] pb-[70px]  flex flex-col xl:flex-row justify-center gap-3 px-4 '>
-      <div className='max-w-fit rounded-xl border border-slate-400 overflow-hidden mx-auto xl:mx-0 '>
+
+      <motion.div animate={{rotateY:[0,200,200,0]}} transition={{type:"tween" , duration:2}} className='max-w-fit rounded-xl border border-slate-300 overflow-hidden mx-auto xl:mx-0 cursor-pointer '  id="nftdv">
+
         <div className='flex justify-between items-center px-2 py-2'>
           <div className='chain w-8 h-8 rounded-full overflow-hidden'>
              <img src={chainlogo} className=' bg-white' alt="" />
@@ -23,7 +27,7 @@ const NFTdetails = () => {
         </div>
 
         <div className='overflow-hidden'><img src={nft} className='w-auto h-auto lg:w-[40rem] lg:h-[40rem]'/></div>
-      </div>
+      </motion.div>
 
       <div className='xl:w-[60%] flex flex-col gap-4 px-3'>
         <p className='text-blue-300 text-lg'>Collection</p>
@@ -43,6 +47,9 @@ const NFTdetails = () => {
 
       </div>
     </div>
+    
+    
+    </>
   )
 }
 
