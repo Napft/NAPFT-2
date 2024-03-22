@@ -119,3 +119,25 @@
 .icon:hover {
   color: white;
 }
+
+.input {
+  padding: 8px 20px;
+  margin: 4px;
+  border-radius: 8px;
+  color: white;
+  background: gray;
+  cursor: pointer;
+  opacity: 30%;
+  border-radius: 5px;
+  
+}
+
+  
+.input::placeholder{
+  color: rgba(255, 255, 255, 0.712);
+}
+.input:hover {
+  border: 1px solid blue;
+  opacity: 100%;
+  background: none;
+}

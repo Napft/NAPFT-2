@@ -7,7 +7,7 @@ import About from "./pages/About";
 import NFTdetails from "./pages/NFTdetails";
 import { Routes, Route } from "react-router-dom";
 import Mint from "./pages/Mint";
-import ProfileLayout from "./pages/Profile/Layout";
+import Profile from "./pages/Profile/Profile";
 import { useEffect } from "react";
 import { useNFTMarketplace } from "./context/NFTMarketplaceContext";
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
         <Route path="/mint" element={<Mint />}></Route>
         <Route path="/aboutus" element={<About />}></Route>
         <Route path="/nftdetails" element={<NFTdetails />}></Route>
-        <Route path="/profile" element={<ProfileLayout />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
       </Routes>
       <Footer />
     </div>
