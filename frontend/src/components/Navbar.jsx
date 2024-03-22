@@ -12,7 +12,7 @@ const HomeDiv = styled.div`
   z-index: 1000;
   @media screen and (max-width: 900px) {
     height: max-content;
-    padding: 10px;
+    padding: 1rem 10px;
     width: 100%;
   }
 `;

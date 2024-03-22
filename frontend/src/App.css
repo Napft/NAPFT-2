@@ -141,3 +141,17 @@
   opacity: 100%;
   background: none;
 }
+
+/* #nftdv{
+  
+  animation: nftani 1.5s linear;
+  
+}
+
+@keyframes nftani {
+  50%{
+    transform: rotateY(-90deg);
+  }100%{
+    transform: rotateY(0deg);
+  }
+} */
