@@ -3,6 +3,8 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import React from "react";
 import { useState } from "react";
+import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
+import axios from "axios";
 
 const MintDiv = styled.div`
   width: 100%;
@@ -93,6 +95,7 @@ const Paragraph = styled.p`
 `;
 
 const Mint = () => {
+  const { mintNFT2 } = useNFTMarketplace();
   React.useEffect(() => {
     Aos.init({ duration: 1500 });
   }, []);
@@ -103,15 +106,46 @@ const Mint = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [ipfsHash, setIpfsHash] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try{
+    //   const formData = new FormData();
+    //   console.log("formData")
+    //   formData.append('file', event.target.file.files[0]);
+    //   console.log("formData", formData)
+    //   // Uploading the file to IPFS
+    //   const response = await axios.post('https://ipfs.infura.io:5001/api/v0/add', formData, {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data'
+    //     }
+    //   });
+      
+    //   const { path } = response.data;
+    //   setIpfsHash(path);
+    //   console.log('IPFS Hash:', path);
+    // // Minting the NFT
+    // const mintedNFT = await mintNFT2({
+    //   price: price,
+    //   IpfsHash: path,
+    //   title: title,
+    //   description: description
+    // });
+    // console.log('Minted NFT:', mintedNFT);
+
     alert("Mint completed");
     setFile("");
     setPreview("");
     setTitle("");
     setDescription("");
     setPrice("");
+  
+}
+catch(error){
+  console.error('Error minting NFT:', error);
+  alert('Error minting NFT');
+}
   };
   // Handle file change event
   function handleChange(e) {

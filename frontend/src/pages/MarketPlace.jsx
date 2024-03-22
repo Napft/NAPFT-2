@@ -1,4 +1,4 @@
-import  { useState, useRef } from 'react';
+import  { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css'
@@ -8,10 +8,14 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Cards from '../components/Cards';
 import { Link } from 'react-router-dom';
 import {motion} from 'framer-motion';
+import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
 
 const MarketPlace = () => {
   const swiperRef = useRef(null);
-  
+  const { getAllNFTs } = useNFTMarketplace();
+  useEffect(() => {
+    // getAllNFTs();
+  }, []);
 
   return (
     <div  className='text-center pt-[110px] pb-[80px] px-2'>

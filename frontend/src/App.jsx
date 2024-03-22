@@ -8,7 +8,14 @@ import NFTdetails from "./pages/NFTdetails";
 import { Routes, Route } from "react-router-dom";
 import Mint from "./pages/Mint";
 import ProfileLayout from "./pages/Profile/Layout";
+import { useEffect } from "react";
+import { useNFTMarketplace } from "./context/NFTMarketplaceContext";
 export default function App() {
+  const { getAllNFTs } = useNFTMarketplace();
+  useEffect(() => {
+    // getAllNFTs()
+    // console.log("Getting all NFTs...")
+  }, []);
   return (
     <div className="bg-black">
       <Navbar />
