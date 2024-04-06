@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaGripLines } from "react-icons/fa6";
 import { useState } from "react";
-import { truncate } from '../store/index';
-import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
+import { truncate } from "../store/index";
+import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import React from "react";
 
 const HomeDiv = styled.div`
   background-color: #1c1f2b;
@@ -116,13 +119,22 @@ const SmallScreen = styled.div`
 `;
 
 const Navbar = () => {
-  const {
-    connectedAccount,
-    connectWallet,
-  } = useNFTMarketplace();
+  const { connectedAccount, connectWallet } = useNFTMarketplace();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   let NavItems = ["Home", "MarketPlace", "AboutUs", "Profile"];
+
+  const handleNavItemClicked = () => {
+    if (isDropdownOpen) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  React.useEffect(() => {
+    Aos.init({ duration: 200 });
+  }, []);
   return (
+
     <>
       <HomeDiv>
         <HomeContainer>
@@ -137,7 +149,11 @@ const Navbar = () => {
           </NavItem>
 
           <ButtonDiv>
-          {connectedAccount ? <InnerButton>{truncate(connectedAccount, 4, 4, 11)}</InnerButton> : <InnerButton onClick={connectWallet}>Connect Wallet</InnerButton>}
+            {connectedAccount ? (
+              <InnerButton>{truncate(connectedAccount, 4, 4, 11)}</InnerButton>
+            ) : (
+              <InnerButton onClick={connectWallet}>Connect Wallet</InnerButton>
+            )}
             <Link to="/mint">
               <InnerButton>Mint your NFT</InnerButton>
             </Link>
@@ -145,25 +161,26 @@ const Navbar = () => {
         </HomeContainer>
         <SmallScreen>
           <LogoDiv1 className="logo"></LogoDiv1>
-          <div className="nav-icon">
+          <div className="nav-icon" >
             <FaGripLines
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="nav"
             />
 
             {isDropdownOpen && (
-              <DropdownMenu>
+              <DropdownMenu data-aos="fade-down-left">
                 {NavItems.map((x, index) => (
                   <Link
                     key={index}
                     to={x === "Home" ? "/" : `/${x.toLowerCase()}`}
+                    onClick={handleNavItemClicked}
                   >
                     <DropdownItem>{x}</DropdownItem>
                   </Link>
                 ))}
                 <ButtonDiv>
                   <InnerButton>Connect Wallet</InnerButton>
-                  <Link to="/mint">
+                  <Link to="/mint" onClick={handleNavItemClicked}>
                     <InnerButton>Mint your NFT</InnerButton>
                   </Link>
                 </ButtonDiv>

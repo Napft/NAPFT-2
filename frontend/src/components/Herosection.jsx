@@ -8,7 +8,7 @@ const HeroDiv = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  height: 100vh;
+  height: 120vh;
   padding: 10px;
   justify-content: center;
   align-items: center;

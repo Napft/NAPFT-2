@@ -8,7 +8,7 @@ import axios from "axios";
 
 const MintDiv = styled.div`
   width: 100%;
-  height: 150vh;
+  height: 120vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
