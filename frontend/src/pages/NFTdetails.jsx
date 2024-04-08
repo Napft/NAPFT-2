@@ -2,12 +2,16 @@
 import nft from '../assets/nft-2.jpeg'
 import { FaRegHeart } from "react-icons/fa";
 import chainlogo from '../assets/polygon.png'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { SlGraph } from "react-icons/sl";
 import { motion } from 'framer-motion';
 
 const NFTdetails = () => {
   let[like , uplike] = useState(1)
+  useEffect(() => {
+    window.scrollTo(0,0);
+    
+  }, []);
   return (
     <>
     <div className=' pt-[120px] lg:pt-[100px] pb-[70px]  flex flex-col xl:flex-row justify-center gap-3 px-4 '>

@@ -14,6 +14,7 @@ const MarketPlace = () => {
   const swiperRef = useRef(null);
   const { getAllNFTs } = useNFTMarketplace();
   useEffect(() => {
+    window.scrollTo(0,0);
     // getAllNFTs();
   }, []);
 

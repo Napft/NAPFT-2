@@ -1,6 +1,10 @@
-import {motion} from 'framer-motion'
+import { useEffect } from "react";
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0,0);
+    
+  }, []);
   return (
     <div className="bg-black md:h-screen pt-[120px] pb-[20px] md:pb-0 md:pt-0 xl:w-[60%] mx-auto text-center px-8 flex flex-col gap-8 justify-center" id="aboutdiv">
 
