@@ -4,8 +4,14 @@ import { FaGripLines } from "react-icons/fa6";
 import { useState } from "react";
 import { truncate } from "../store/index";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
+<<<<<<< HEAD
 // import Aos from "aos";
 // import "aos/dist/aos.css";
+=======
+import Aos from "aos";
+import "aos/dist/aos.css";
+import Modal from './Modal'
+>>>>>>> 1013e687a0369a605e6000885feb10d88366c901
 import React from "react";
 
 
@@ -134,6 +140,7 @@ const SmallScreen = styled.div`
 const Navbar = () => {
   const { connectedAccount, connectWallet } = useNFTMarketplace();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const[showModal , setshowModal] = useState(false);
 
   let NavItems = ["Home", "MarketPlace", "AboutUs", "Profile"];
 
@@ -165,7 +172,7 @@ const Navbar = () => {
             {connectedAccount ? (
               <InnerButton>{truncate(connectedAccount, 4, 4, 11)}</InnerButton>
             ) : (
-              <InnerButton onClick={connectWallet}>Connect Wallet</InnerButton>
+              <InnerButton onClick={() => setshowModal(true)}>Connect Wallet</InnerButton>
             )}
             <Link to="/mint">
               <InnerButton>Mint your NFT</InnerButton>
@@ -192,7 +199,7 @@ const Navbar = () => {
                   </Link>
                 ))}
                 <ButtonDiv>
-                  <InnerButton>Connect Wallet</InnerButton>
+                  <InnerButton onClick={() => setshowModal(true)} >Connect Wallet</InnerButton>
                   <Link to="/mint" onClick={handleNavItemClicked}>
                     <InnerButton>Mint your NFT</InnerButton>
                   </Link>
@@ -202,6 +209,11 @@ const Navbar = () => {
           </div>
         </SmallScreen>
       </HomeDiv>
+
+      {
+          showModal && <Modal close = {()=>{setshowModal(false)}}/>
+      } 
+      
     </>
   );
 };

@@ -96,7 +96,7 @@ const LogoCommon = styled.div`
 `;
 
 const Footer = () => {
-  let NavItems = ["Home", "MarketPlace", "AboutUs", "PersonalPage"];
+  let NavItems = ["Home", "MarketPlace", "AboutUs", "Profile"];
   return (
     <FooterDiv>
       <LogoCommon>
@@ -105,7 +105,9 @@ const Footer = () => {
       </LogoCommon>
       <Items>
         {NavItems.map((x, index) => (
-          <ItemSpan key={index}>{x}</ItemSpan>
+          <Link key={index} to={x == 'Home' ? '/' : `/${x.toLowerCase()}`}>
+          <ItemSpan >{x}</ItemSpan>
+          </Link>
         ))}
       </Items>
       <Socials>

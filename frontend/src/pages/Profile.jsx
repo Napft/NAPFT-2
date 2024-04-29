@@ -10,6 +10,7 @@ import videoSource from "../assets/sun_-_46410 (1440p).mp4";
 
 function Profile() {
   useEffect(() => {
+    window.scrollTo(0,0);
     Aos.init({ duration: 1000 });
   }, []);
 

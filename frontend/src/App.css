@@ -155,3 +155,28 @@
     transform: rotateY(0deg);
   }
 } */
+
+.wrapper{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(52, 49, 49, 0.8);
+} 
+
+
+#container{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50% , -50%);
+}
+
+#wallets{
+  box-shadow: 0 0 10px 2px rgb(201, 197, 197);
+}
+
+#trust{
+  box-shadow: 0 0 10px 2px rgb(201, 197, 197);
+}
