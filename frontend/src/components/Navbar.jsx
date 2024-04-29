@@ -4,15 +4,9 @@ import { FaGripLines } from "react-icons/fa6";
 import { useState } from "react";
 import { truncate } from "../store/index";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
-<<<<<<< HEAD
 // import Aos from "aos";
 // import "aos/dist/aos.css";
-=======
-import Aos from "aos";
-import "aos/dist/aos.css";
 import Modal from './Modal'
->>>>>>> 1013e687a0369a605e6000885feb10d88366c901
-import React from "react";
 
 
 const fadeInUpAnimation = keyframes`
