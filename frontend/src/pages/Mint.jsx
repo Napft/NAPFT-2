@@ -8,7 +8,8 @@ import axios from "axios";
 
 const MintDiv = styled.div`
   width: 100%;
-  height: 120vh;
+  padding: 5rem 0;
+  /* height: 160vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,7 +18,7 @@ const MintDiv = styled.div`
 `;
 
 const MintForm = styled.form`
-  width: 30%;
+  width: 50%;
   padding: 20px;
   background-color: #1c1f2b;
   color: white;
@@ -147,7 +148,6 @@ catch(error){
   alert('Error minting NFT');
 }
   };
-  // Handle file change event
   function handleChange(e) {
     const selectedFile = e.target.files[0]; // Get the first file from the input
 
@@ -182,8 +182,8 @@ catch(error){
             src={preview}
             alt="Preview"
             style={{
-              maxWidth: "100%",
-              maxHeight: "200px",
+              maxWidth: "300px",
+              maxHeight: "300px",
               marginTop: "10px",
               borderRadius: "5px",
             }}

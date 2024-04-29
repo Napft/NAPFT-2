@@ -10,7 +10,11 @@ const FooterDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 30px;
+  padding: 5px 20px 15px;
+  bottom: 0;
+  left: 0;
+  position: relative;
+  width: 100%;
   @media screen and (max-width: 450px) {
     justify-content: center;
     flex-direction: column;
@@ -20,8 +24,10 @@ const FooterDiv = styled.div`
 `;
 
 const LogoDiv = styled.div`
-  width: 120px;
+  width: 100px;
   height: 100px;
+  padding: 0;
+  margin: 0;
   @media screen and (max-width: 450px) {
     width: 100px;
     height: 60px;
@@ -30,6 +36,7 @@ const LogoDiv = styled.div`
 
 const Paragraph = styled.p`
   letter-spacing: 0.15em;
+  padding: 0;
   font-weight: bold;
   color: gray;
   font-size: 0.8rem;

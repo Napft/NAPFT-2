@@ -1,12 +1,24 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { FaGripLines } from "react-icons/fa6";
 import { useState } from "react";
 import { truncate } from "../store/index";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
-import Aos from "aos";
-import "aos/dist/aos.css";
+// import Aos from "aos";
+// import "aos/dist/aos.css";
 import React from "react";
+
+
+const fadeInUpAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Starting position below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Ending position at top */
+  }
+`;
 
 const HomeDiv = styled.div`
   background-color: #1c1f2b;
@@ -97,6 +109,7 @@ const DropdownMenu = styled.div`
   width: 100%;
   height: 240px;
   background-color: #1c1f2b;
+  animation: ${fadeInUpAnimation} 0.5s ease-in-out; /* Applying the animation */
 `;
 
 const DropdownItem = styled.div`
@@ -130,9 +143,9 @@ const Navbar = () => {
     }
   };
 
-  React.useEffect(() => {
-    Aos.init({ duration: 200 });
-  }, []);
+  // React.useEffect(() => {
+  //   Aos.init({ duration: 200 });
+  // }, []);
   return (
 
     <>
@@ -168,7 +181,7 @@ const Navbar = () => {
             />
 
             {isDropdownOpen && (
-              <DropdownMenu data-aos="fade-down-left">
+              <DropdownMenu>
                 {NavItems.map((x, index) => (
                   <Link
                     key={index}
