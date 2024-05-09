@@ -164,13 +164,17 @@ const Navbar = () => {
 
           <ButtonDiv>
             {connectedAccount ? (
+              () => setshowModal(false),
               <InnerButton>{truncate(connectedAccount, 4, 4, 11)}</InnerButton>
             ) : (
               <InnerButton onClick={() => setshowModal(true)}>Connect Wallet</InnerButton>
             )}
+            {connectedAccount ? (
             <Link to="/mint">
               <InnerButton>Mint your NFT</InnerButton>
-            </Link>
+            </Link>) : (
+              <InnerButton onClick={() => setshowModal(true)}>Mint your NFT</InnerButton>
+            )}
           </ButtonDiv>
         </HomeContainer>
         <SmallScreen>

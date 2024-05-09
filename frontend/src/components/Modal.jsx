@@ -3,8 +3,11 @@ import ms from '../assets/metamask.svg'
 import trust from '../assets/trust-wallet-token.svg' 
 import cb from '../assets/coinbase.svg' 
 import { RxCross2 } from "react-icons/rx";                
+import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
 
 const Modal = ({close}) => {
+  const { connectedAccount, connectWallet } = useNFTMarketplace();
+
   return (
     <>
     <div className='wrapper'></div>
@@ -18,7 +21,9 @@ const Modal = ({close}) => {
       </div>
       <h2 className='text-2xl font-semibold'>Connect to NapFT</h2>
 
-      <div className='w-full rounded-md' id='wallets'>
+      <div className='w-full rounded-md' id='wallets' onClick={
+        window.ethereum ? (connectWallet)
+         : alert("Install metamask")}>
         <div className='flex gap-4 items-center w-full p-3 cursor-pointer'>
           <img src={ms} alt="" className='w-10 h-10' />
           <h1 className='text-lg font-semibold'>MetaMask</h1>
