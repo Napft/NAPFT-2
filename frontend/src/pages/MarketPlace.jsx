@@ -12,10 +12,11 @@ import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
 
 const MarketPlace = () => {
   const swiperRef = useRef(null);
-  const { getAllNFTs } = useNFTMarketplace();
+  const { getAllNFTs, structuredNfts } = useNFTMarketplace();
   useEffect(() => {
     window.scrollTo(0,0);
-    // getAllNFTs();
+    getAllNFTs;
+    structuredNfts;
   }, []);
 
   return (

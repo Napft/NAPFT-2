@@ -37,6 +37,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
       const alchemyProvider = await getAlchemyProvider();
       const contract = new ethers.Contract(CONTRACT_ADDRESS, NFTMarketplaceABI, alchemyProvider);
       setContract(contract);
+      console.log(contract);
     } catch (error) {
       console.error(error);
       reportError(error);
@@ -87,6 +88,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   };
 
   const structuredNfts = (nfts) => {
+    console.log(nfts);
     return nfts.map((nft) => ({
       id: Number(nft.id),
       owner: nft.owner.toLowerCase(),
@@ -100,9 +102,9 @@ export const NFTMarketplaceProvider = ({ children }) => {
 
   const getAllNFTs = async () => {
     try {
-      if (!window.ethereum) {
-        throw new Error('Please install MetaMask');
-      }
+      // if (!window.ethereum) {
+      //   throw new Error('Please install MetaMask');
+      // }
   
       const nfts = await contract.getAllNFTs().call();
       const transactions = await contract.getAllTransactions().call();

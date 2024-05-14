@@ -113,28 +113,27 @@ const Mint = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-    //   const formData = new FormData();
-    //   console.log("formData")
-    //   formData.append('file', event.target.file.files[0]);
-    //   console.log("formData", formData)
-    //   // Uploading the file to IPFS
-    //   const response = await axios.post('https://ipfs.infura.io:5001/api/v0/add', formData, {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data'
-    //     }
-    //   });
+      const formData = new FormData();
+      formData.append('file', e.target.file.files[0]);
+      console.log("formData", formData)
+      // Uploading the file to IPFS
+      const response = await axios.post('https://ipfs.infura.io:5001/api/v0/add', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
       
-    //   const { path } = response.data;
-    //   setIpfsHash(path);
-    //   console.log('IPFS Hash:', path);
-    // // Minting the NFT
-    // const mintedNFT = await mintNFT2({
-    //   price: price,
-    //   IpfsHash: path,
-    //   title: title,
-    //   description: description
-    // });
-    // console.log('Minted NFT:', mintedNFT);
+      const { path } = response.data;
+      setIpfsHash(path);
+      console.log('IPFS Hash:', path);
+    // Minting the NFT
+    const mintedNFT = await mintNFT2({
+      price: price,
+      IpfsHash: path,
+      title: title,
+      description: description
+    });
+    console.log('Minted NFT:', mintedNFT);
 
     alert("Mint completed");
     setFile("");
