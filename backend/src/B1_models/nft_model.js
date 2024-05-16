@@ -42,7 +42,7 @@ const NFT_schema = new mongoose.Schema({
             type: [{ timestamp: Date, price: Number }],
             validate: {
                 validator: validate_price_timeline,
-                message: "The prise timeline needs to have atleast one record",
+                message: "The price timeline needs to have atleast one record",
             },
             required: false,
         },
