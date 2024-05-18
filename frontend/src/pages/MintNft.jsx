@@ -117,7 +117,6 @@ const MintNft = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      
       const formData = new FormData();
       formData.append("file", file);
       const metadata = JSON.stringify({
@@ -145,7 +144,7 @@ const MintNft = () => {
       // // Minting the NFT
       const mintedNFT = await mintNFT2({
         price: price,
-        IpfsHash: resData,
+        IpfsHash: resData.IpfsHash,
         title: title,
         description: description,
       });
@@ -184,7 +183,35 @@ const MintNft = () => {
       console.error("Error minting NFT:", error);
       alert("Error minting NFT");
     }
-  };
+};
+  // const handleCheck = async(e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const new_nft = {
+  //       IPFS_hash: "asdfsdft",
+  //       NFT_token_ID: 1232343244,
+  //       title: "asdasg",
+  //       price: 5003,
+  //       description: "asdadad",
+  //       creator_metamask_ID: "sdasdadf",
+  //       owner_metamask_ID: "asdadafsd",
+  //     };
+
+  //     console.log("New NFT:", new_nft);
+  //     const online_url = "http://localhost:8800/api/v1/nft/new_nft";
+  //     axios
+  //       .post(online_url, new_nft)
+  //       .then((response) => {
+  //         console.log("Success", response);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error", error);
+  //       });
+
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   // Handle file change event
   function handleChange(e) {

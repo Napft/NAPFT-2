@@ -6,7 +6,7 @@ import MarketPlace from "./pages/MarketPlace";
 import About from "./pages/About";
 import NFTdetails from "./pages/NFTdetails";
 import { Routes, Route } from "react-router-dom";
-import Mint from "./pages/Mint";
+//import Mint from "./pages/Mint";
 import MintNft from "./pages/MintNft";
 import Profile from "./pages/Profile/Profile";
 // import { useEffect } from "react";

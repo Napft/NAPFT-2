@@ -1,15 +1,13 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { ethers } from 'ethers';
-import axios from 'axios';
-import {
-  setGlobalState,
-  getGlobalState,
-} from '../store';
+import { createContext, useContext, useEffect, useState } from "react";
+import { ethers } from "ethers";
+import axios from "axios";
+import { setGlobalState, getGlobalState } from "../store";
+import { toast } from "react-hot-toast";
 import {
   CONTRACT_ADDRESS,
   ALCHEMY_API_KEY,
-  NFTMarketplaceABI
-} from '../context/constants';
+  NFTMarketplaceABI,
+} from "../context/constants";
 
 const NFTMarketplaceContext = createContext();
 
@@ -20,11 +18,15 @@ export const useNFTMarketplace = () => {
 export const NFTMarketplaceProvider = ({ children }) => {
   const [contract, setContract] = useState(null);
   const [provider, setProvider] = useState(null);
-  const [connectedAccount, setConnectedAccount] = useState('');
+  const [connectedAccount, setConnectedAccount] = useState("");
+  const [connectedWalletId, setConnectedWalletId] = useState("");
 
   const getAlchemyProvider = async () => {
     try {
-      const alchemyProvider = new ethers.providers.AlchemyProvider('mumbai', ALCHEMY_API_KEY);
+      const alchemyProvider = new ethers.providers.AlchemyProvider(
+        "mumbai",
+        ALCHEMY_API_KEY
+      );
       setProvider(alchemyProvider);
     } catch (error) {
       console.error(error);
@@ -35,7 +37,11 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const getAlchemyContract = async () => {
     try {
       const alchemyProvider = await getAlchemyProvider();
-      const contract = new ethers.Contract(CONTRACT_ADDRESS, NFTMarketplaceABI, alchemyProvider);
+      const contract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        NFTMarketplaceABI,
+        alchemyProvider
+      );
       setContract(contract);
       console.log(contract);
     } catch (error) {
@@ -47,11 +53,18 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const connectWallet = async () => {
     try {
       if (!window.ethereum) {
-        throw new Error('Please install MetaMask');
+        throw new Error("Please install MetaMask");
       }
-  
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
       setConnectedAccount(accounts[0]);
+      setConnectedWalletId(accounts[0]);
+      localStorage.setItem("WalletId", accounts[0]);
+      toast.success("Wallet Connection is Successfull.....");
+
+      // console.log(accounts[0]); in this metamask id is present
     } catch (error) {
       console.error(error);
       reportError(error);
@@ -61,26 +74,29 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const isWalletConnected = async () => {
     try {
       if (!window.ethereum) {
-        throw new Error('Please install MetaMask');
+        throw new Error("Please install MetaMask");
       }
-  
-      const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-  
-      window.ethereum.on('chainChanged', (chainId) => {
+
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts",
+      });
+
+      window.ethereum.on("chainChanged", (chainId) => {
         window.location.reload();
       });
-  
-      window.ethereum.on('accountsChanged', async () => {
+
+      window.ethereum.on("accountsChanged", async () => {
         setConnectedAccount(accounts[0]);
         await isWalletConnected();
       });
-  
+
       if (accounts.length) {
         setConnectedAccount(accounts[0]);
       } else {
-        alert('Please connect wallet.');
-        console.log('No accounts found.');
+        alert("Please connect wallet.");
+        console.log("No accounts found.");
       }
+      // console.log(accounts[0]); in this metamask id is present
     } catch (error) {
       console.error(error);
       reportError(error);
@@ -89,15 +105,17 @@ export const NFTMarketplaceProvider = ({ children }) => {
 
   const structuredNfts = (nfts) => {
     console.log(nfts);
-    return nfts.map((nft) => ({
-      id: Number(nft.id),
-      owner: nft.owner.toLowerCase(),
-      cost: ethers.utils.formatEther(nft.cost),
-      title: nft.title,
-      description: nft.description,
-      metadataURI: nft.metadataURI,
-      timestamp: nft.timestamp,
-    })).reverse();
+    return nfts
+      .map((nft) => ({
+        id: Number(nft.id),
+        owner: nft.owner.toLowerCase(),
+        cost: ethers.utils.formatEther(nft.cost),
+        title: nft.title,
+        description: nft.description,
+        metadataURI: nft.metadataURI,
+        timestamp: nft.timestamp,
+      }))
+      .reverse();
   };
 
   const getAllNFTs = async () => {
@@ -105,11 +123,11 @@ export const NFTMarketplaceProvider = ({ children }) => {
       // if (!window.ethereum) {
       //   throw new Error('Please install MetaMask');
       // }
-  
+
       const nfts = await contract.getAllNFTs().call();
       const transactions = await contract.getAllTransactions().call();
-      setGlobalState('nfts', structuredNfts(nfts));
-      setGlobalState('transactions', structuredNfts(transactions));
+      setGlobalState("nfts", structuredNfts(nfts));
+      setGlobalState("transactions", structuredNfts(transactions));
     } catch (error) {
       console.error(error);
       reportError(error);
@@ -120,7 +138,10 @@ export const NFTMarketplaceProvider = ({ children }) => {
     try {
       const signer = provider.getSigner();
       const updatedContract = contract.connect(signer);
-      const tx = await updatedContract.changePrice(Number(id), ethers.utils.parseEther(cost.toString()));
+      const tx = await updatedContract.changePrice(
+        Number(id),
+        ethers.utils.parseEther(cost.toString())
+      );
       await tx.wait();
     } catch (error) {
       console.error(error);
@@ -128,43 +149,56 @@ export const NFTMarketplaceProvider = ({ children }) => {
     }
   };
 
-  const mintNFT2 = async ({ price, IpfsHash, title = "My NFT title", description = "Some Description...." }) => {
+  const mintNFT2 = async ({
+    price,
+    IpfsHash,
+    title = "My NFT title",
+    description = "Some Description....",
+  }) => {
     if (connectedAccount) {
       try {
-      const signer = provider.getSigner();
-      const newContract = contract.connect(signer);
-      const tx = await newContract.createToken(IpfsHash, ethers.utils.parseEther(`${price}`));
-      const rc = await tx.wait();
-      const event = rc.events.find(event => event.event === 'Transfer');
-      const [from, to, value] = event.args;
-      console.log(from, to, value);
+        const signer = provider.getSigner();
+        const newContract = contract.connect(signer);
+        const tx = await newContract.createToken(
+          IpfsHash,
+          ethers.utils.parseEther(`${price}`)
+        );
+        const rc = await tx.wait();
+        const event = rc.events.find((event) => event.event === "Transfer");
+        const [from, to, value] = event.args;
+        console.log(from, to, value);
 
-      const new_nft = {
-        IPFS_hash: IpfsHash,
-        NFT_token_ID: parseInt(value["_hex"], 16),
-        title: title,
-        price: price,
-        description: description,
-      };
+        const new_nft = {
+          IPFS_hash: IpfsHash,
+          NFT_token_ID: parseInt(value["_hex"], 16),
+          title: title,
+          price: price,
+          description: description,
+          creator_metamask_ID: connectedWalletId,
+          owner_metamask_ID: connectedWalletId,
+        };
 
-      console.log("New NFT:", new_nft);
-      const online_url = "https://napft-backend.vercel.app/api/nft/";
-      axios.post(online_url, new_nft).then((response) => {
-        console.log("Success", response);
-      }).catch((error) => {
-        console.error("Error", error);
-      });
+        console.log("New NFT:", new_nft);
+        const online_url = "http://localhost:8800/api/v1/nft/new_nft";
+        axios
+          .post(online_url, new_nft)
+          .then((response) => {
+            console.log("Nft creation is Success", response);
+          })
+          .catch((error) => {
+            console.error("Error", error);
+          });
 
-      return value;
-    } catch (error) {
-      console.error(error);
-      reportError(error);
+        return value;
+      } catch (error) {
+        console.error(error);
+        reportError(error);
+      }
+    } else {
+      toast.success("please download Metamask extension in your browser");
+      console.log("Please connect wallet");
     }
-  }
-else{
-  console.log("Please connect wallet");
-}
-};
+  };
 
   const buyNFT = async (tokenId) => {
     try {
@@ -218,7 +252,7 @@ else{
         buyNFT,
         updateNFT,
         isWalletConnected,
-        authenticate
+        authenticate,
       }}
     >
       {children}

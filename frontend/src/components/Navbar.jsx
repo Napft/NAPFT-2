@@ -136,6 +136,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const[showModal , setshowModal] = useState(false);
 
+
   let NavItems = ["Home", "MarketPlace", "AboutUs", "Profile"];
 
   const handleNavItemClicked = () => {
@@ -163,7 +164,7 @@ const Navbar = () => {
           </NavItem>
 
           <ButtonDiv>
-            {connectedAccount ? (
+            {connectedAccount  ? (
               () => setshowModal(false),
               <InnerButton>{truncate(connectedAccount, 4, 4, 11)}</InnerButton>
             ) : (
