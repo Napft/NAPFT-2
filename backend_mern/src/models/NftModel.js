@@ -49,10 +49,10 @@ const NFT_schema = new mongoose.Schema({
     },
     transaction_history: {
       type: [{ metamask_ID: String, timestamp: Date }],
-      validate: {
-        validator: validate_transaction_history,
-        message: "The Transaction history needs to have atleast one record",
-      },
+      // validate: {
+      //   validator: validate_transaction_history,
+      //   message: "The Transaction history needs to have atleast one record",
+      // },
       required: false,
     },
   },

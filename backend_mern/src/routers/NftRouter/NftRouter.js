@@ -1,7 +1,8 @@
 import express from "express";
-import { testNft } from "../../controllers/Nft.Controller.js";
+import { testNft, newNft } from "../../controllers/Nft.Controller.js";
 const router = express.Router();
 router.get("/" , testNft); // Simple [X]
+router.post("/new_nft",newNft); // Simple [X]
 
 // import { authorize_user } from "../../A2_middleware/authentication_middleware.js";
 // import {
