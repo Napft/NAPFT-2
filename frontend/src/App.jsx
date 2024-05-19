@@ -6,6 +6,7 @@ import MarketPlace from "./pages/MarketPlace";
 import About from "./pages/About";
 import NFTdetails from "./pages/NFTdetails";
 import { Routes, Route } from "react-router-dom";
+import Owned from "./pages/Owned";
 //import Mint from "./pages/Mint";
 import MintNft from "./pages/MintNft";
 import Profile from "./pages/Profile/Profile";
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/aboutus" element={<About />}></Route>
         <Route path="/nftdetails" element={<NFTdetails />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/ownedNFTS" element={<Owned/>}></Route>
       </Routes>
       <Footer />
     </div>
