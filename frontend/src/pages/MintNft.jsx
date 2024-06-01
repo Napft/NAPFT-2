@@ -176,7 +176,6 @@ const MintNft = () => {
       // });
       // console.log('Minted NFT:', mintedNFT);
 
-      alert("Mint completed");
       setFile("");
       setPreview("");
       setTitle("");

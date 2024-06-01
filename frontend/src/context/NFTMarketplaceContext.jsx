@@ -201,7 +201,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
         description: description,
       };
 
-      console.log("New NFT:", new_nft);
+      toast.success("NFT minted successfully.....");
       // axios.post(online_url, new_nft).then((response) => {
       //   console.log("Success", response);
       // }).catch((error) => {
