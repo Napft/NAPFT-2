@@ -108,6 +108,7 @@ const MintNft = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [royalityfee, setRoyalityfee] = useState("");
   const [ipfsHash, setIpfsHash] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const changeHandler = (event) => {
@@ -117,6 +118,7 @@ const MintNft = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      
       const formData = new FormData();
       formData.append("file", file);
       const metadata = JSON.stringify({
@@ -143,8 +145,9 @@ const MintNft = () => {
       console.log(resData);
       // // Minting the NFT
       const mintedNFT = await mintNFT2({
-        price: price,
         IpfsHash: resData.IpfsHash,
+        price: price,
+        royalityfee: royalityfee,
         title: title,
         description: description,
       });
@@ -183,8 +186,9 @@ const MintNft = () => {
       console.error("Error minting NFT:", error);
       alert("Error minting NFT");
     }
-};
-  // const handleCheck = async(e) => {
+  };
+
+    // const handleCheck = async(e) => {
   //   e.preventDefault();
   //   try {
   //     const new_nft = {
@@ -297,6 +301,17 @@ const MintNft = () => {
             name="price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="royalityfee">Royalty Fee(%)</Label>
+          <Input
+            type="number"
+            id="royalityfee"
+            name="royalityfee"
+            value={royalityfee}
+            onChange={(e) => setRoyalityfee(e.target.value)}
             required
           />
         </FormField>
