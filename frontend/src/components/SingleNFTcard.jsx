@@ -1,14 +1,14 @@
 
-import nft from '../assets/nft-1.jpeg'
+
 import { Link } from "react-router-dom"; 
 import {motion} from 'framer-motion';
 import { id } from 'ethers';
 
-const SingleNFTcard = ({img , Id , price , royalty}) => {
+const SingleNFTcard = ({img , price , royalty}) => {
   return (
   
   
-   <Link to='/nftdetails'><motion.div whileHover={{y:10}} transition={{type:"spring", bounce:0.8}}  className="text-left w-80 overflow-hidden cursor-pointer shadow-md shadow-blue-400 rounded-xl" >
+   <Link to={{ pathname: `/nftdetails` , state: { img, price, royalty }}}><motion.div whileHover={{y:10}} transition={{type:"spring", bounce:0.8}}  className="text-left w-80 overflow-hidden cursor-pointer shadow-md shadow-blue-400 rounded-xl" >
       <div className="w-full h-72 overflow-hidden">
       <img src={img} alt={`ID ${id}`} className="w-full hover:scale-110 h-[100%] ease-in-out duration-500"/>
       </div>
