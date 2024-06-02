@@ -7,11 +7,11 @@ import { NFTMarketplaceProvider } from "./context/NFTMarketplaceContext";
 import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <NFTMarketplaceProvider>
       <Router>
         <Toaster position="top-center" reverseOrder={false} /> <App />
       </Router>
     </NFTMarketplaceProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

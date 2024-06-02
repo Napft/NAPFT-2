@@ -15,7 +15,7 @@ const MarketPlace = () => {
   const { getAllNFTs, structuredNfts } = useNFTMarketplace();
   useEffect(() => {
     window.scrollTo(0,0);
-    getAllNFTs;
+    getAllNFTs();
     structuredNfts;
   }, []);
 

@@ -5,9 +5,11 @@ import chainlogo from '../assets/polygon.png'
 import { useState,useEffect } from 'react';
 import { SlGraph } from "react-icons/sl";
 import { motion } from 'framer-motion';
+import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
 
 const NFTdetails = () => {
   let[like , uplike] = useState(1)
+  const { getNFTDetails } = useNFTMarketplace();
   useEffect(() => {
     window.scrollTo(0,0);
     
@@ -47,6 +49,7 @@ const NFTdetails = () => {
         <div className='border-2 border-slate-400 rounded-lg p-4  flex gap-2 items-center'>
           <SlGraph className='text-xl text-white'/>
           <h2 className='text-xl text-white'>Buying History</h2>
+          {console.log(getNFTDetails(1))}
         </div>
 
       </div>
