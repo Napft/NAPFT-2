@@ -63,7 +63,7 @@ const NFTdetails = () => {
         <div className='border-2 border-slate-400 rounded-lg p-4  flex gap-2 items-center'>
           <SlGraph className='text-xl text-white'/>
           <h2 className='text-xl text-white'>Buying History</h2>
-          {console.log(getNFTDetails(1))}
+          {/* {console.log(getNFTDetails(1))} */}
         </div>
 
       </div>
