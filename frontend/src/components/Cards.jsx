@@ -11,25 +11,16 @@ function Cards() {
     <h2 className="text-white text-3xl mt-5 font-semibold ">Our Collections</h2>
     <div className="flex justify-center items-center flex-wrap gap-8 mt-8 w-[90%] mx-auto">
     {nfts.length === 0 ? (
-          <p className="text-white">No NFTs available</p>
+          <p className="text-slate-300 font-light">No NFTs available</p>
         ) : (
                 nfts.map((nft, index) => (
-                    <div key={index} className="h-48 w-48 bg-red-500">
-                        <img src={nft.tokenURI} alt={`NFT ${nft.id}`} />
-                        <p>ID: {nft.id}</p>
-                        <p>Price: {nft.price} MATIC</p>
-                        <p>Royalty: {nft.royalty}%</p>
-                    </div>
+                    
+                      <SingleNFTcard key={index} img={nft.tokenURI} Id = {nft.id} price = {nft.price} royalty = {nft.royalty} />
+                       
+                    
                 )))}
             
-      {/* <SingleNFTcard/>
-      <SingleNFTcard/>
-      <SingleNFTcard/>
-      <SingleNFTcard/>
-      <SingleNFTcard/>
-      <SingleNFTcard/>
-      <SingleNFTcard/>
-      <SingleNFTcard/> */}
+      
     </div>
     </>
   );
