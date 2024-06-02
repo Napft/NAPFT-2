@@ -147,12 +147,18 @@ export const NFTMarketplaceProvider = ({ children }) => {
       const nftsArray = [];
       for (let i = 1; i <= tokenCount; i++) {
         const tokenURI = await contract.tokenURI(i);
-        const price = await contract.priceOfNFT(i);
-        const royalty = await contract.RoyalityFees(i);
-        nftsArray.push({ id: i, tokenURI, price: ethers.utils.formatEther(price), royalty });
+        const price = await contract.GetNftPrice(i);
+        const royalty = await contract.getRoyalityFee(i);
+        nftsArray.push({ 
+          id: i, 
+          ipfsHash: tokenURI, 
+          price: ethers.formatEther(`${price}`), 
+          royalty: royalty.toString(), 
+        });
     }
     setNfts(nftsArray);
     console.log("nftsArray :", nftsArray);
+    console.log(`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${nftsArray[0].ipfsHash}`)
     // return nftsArray;
     }} catch (error) {
       console.error(error);
