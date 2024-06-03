@@ -1,8 +1,13 @@
 import express from "express";
-import { testNft, newNft } from "../../controllers/Nft.Controller.js";
+import {
+  testNft,
+  newNft,
+  get_newlyCreated_Nft,
+} from "../../controllers/Nft.Controller.js";
 const router = express.Router();
-router.get("/" , testNft); // Simple [X]
-router.post("/new_nft",newNft); // Simple [X]
+router.get("/", testNft); // Simple [X]
+router.post("/new_nft", newNft); // Minting a NFT [X]
+router.get("/get_recent_nft", get_newlyCreated_Nft); // Get recent nfts  [X]
 
 // import { authorize_user } from "../../A2_middleware/authentication_middleware.js";
 // import {

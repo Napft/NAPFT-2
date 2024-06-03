@@ -1,13 +1,12 @@
 import NFT_model from "../models/NftModel.js";
 
+//Just testing the controller is working perfectly or not for the production based
 export const testNft = async (req, res) => {
   res.json({
     success: true,
     message: "this is a testing message from NFT Controller",
   });
 };
-
-
 //New NFT creation
 export const newNft = async (req, res) => {
   try {
@@ -57,3 +56,19 @@ export const newNft = async (req, res) => {
     });
   }
 };
+//get recent NFTS
+export const get_newlyCreated_Nft = async (req, res) => {
+  try {
+    const nfts = await NFT_model.find().sort({ NFT_token_ID: -1 }).limit(3).exec();
+    return res.status(200).json({
+      success: true,
+      message: "fetching data is successfull",
+      nfts
+    })
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message:"error in fetching NFTs"
+    })
+  }
+}
