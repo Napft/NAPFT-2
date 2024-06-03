@@ -10,6 +10,7 @@ import Owned from "./pages/Owned";
 //import Mint from "./pages/Mint";
 import MintNft from "./pages/MintNft";
 import Profile from "./pages/Profile/Profile";
+import Details from "./pages/Details";
 // import { useEffect } from "react";
 export default function App() {
   // useEffect(() => {
@@ -24,7 +25,8 @@ export default function App() {
         <Route path="/aboutus" element={<About />}></Route>
         <Route path="/nftdetails" element={<NFTdetails />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/ownedNFTS" element={<Owned/>}></Route>
+        <Route path="/ownedNFTS" element={<Owned />}></Route>
+        <Route path="/details" element={<Details />}></Route>
       </Routes>
       <Footer />
     </div>

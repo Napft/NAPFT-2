@@ -42,7 +42,7 @@ const MarketPlace = () => {
     id='swiper2'
     >
       <SwiperSlide>
-      <Link to='/nftdetails'><motion.div animate={{scale:1}} initial={{scale:0}} transition={{type:"tween", duration:0.5}}
+      <Link to='/details'><motion.div animate={{scale:1}} initial={{scale:0}} transition={{type:"tween", duration:0.5}}
           className="rec1 h-full relative  flex flex-col justify-center items-center text-white "
         > 
           {/* <div className="absolute inset-0 bg-black opacity-60"></div>
@@ -57,10 +57,10 @@ const MarketPlace = () => {
 
       <SwiperSlide>
 
-         <Link to='/nftdetails'><motion.div animate={{scale:1}} initial={{scale:0}}
+         <Link to='/details'><motion.div animate={{scale:1}} initial={{scale:0}}
           className="rec2 h-full relative  flex flex-col justify-center items-center text-white"
           
-        > <Link to='/nftdetails'></Link>
+        > <Link to='/details'></Link>
           {/* <div className="absolute inset-0 bg-black opacity-60"></div>
           <h2 className="text-4xl mb-4 z-10">second nft</h2>
           <p className="text-xl mb-6 z-10">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem impedit optio accusantium!</p>
@@ -75,7 +75,7 @@ const MarketPlace = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-      <Link to='/nftdetails'>
+      <Link to='/details'>
         <motion.div animate={{scale:1}} initial={{scale:0}}
           className="rec3 h-full relative  flex flex-col justify-center items-center text-white">
             
