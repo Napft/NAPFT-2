@@ -36,11 +36,11 @@ The NFT model contains these 5 sections
 
 const NFT_schema = new mongoose.Schema({
   IPFS_hash: { type: String, required: true },
-  NFT_token_ID: { type: Number, unique: true },  //required : true
+  NFT_token_ID: { type: Number, unique: true }, //required : true
   is_public: { type: Boolean, default: true },
   section_price_info: {
     price_timeline: {
-      type: [{ timestamp: Date, price: Number }],
+      type: [{ timestamp: Date, price: Number, royalty_fee :Number}],
       validate: {
         validator: validate_price_timeline,
         message: "The price timeline needs to have atleast one record",

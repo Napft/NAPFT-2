@@ -10,7 +10,7 @@ export const testNft = async (req, res) => {
 //New NFT creation
 export const newNft = async (req, res) => {
   try {
-    const { IPFS_hash, NFT_token_ID, title, price, description } = req.body;
+    const { IPFS_hash, title, price, description, royalty_fee } = req.body;
 
     // Provide default values for required fields if not provided by the frontend
     const creator_metamask_ID =
@@ -20,7 +20,6 @@ export const newNft = async (req, res) => {
 
     const newNFT = await new NFT_model({
       IPFS_hash,
-      NFT_token_ID,
       section_basic_info: {
         title,
         description,
@@ -28,7 +27,7 @@ export const newNft = async (req, res) => {
         owner_metamask_ID,
       },
       section_price_info: {
-        price_timeline: [{ timestamp: new Date(), price }],
+        price_timeline: [{ timestamp: new Date(), price, royalty_fee}],
         transaction_history: [],
       },
       // section_additional_info: {
