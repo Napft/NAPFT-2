@@ -73,13 +73,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
 
   const isWalletConnected = async () => {
     try {
-      // if (!window.ethereum) {
-      //   // toast.error("Please install Metamask extension in your browser")
-      //   // throw new Error('Please install MetaMask');
-      // }
-  
       const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-  
       if (accounts.length) {
         setConnectedAccount(accounts[0]);
         console.log(connectedAccount)
@@ -161,7 +155,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
     }
     setNfts(nftsArray);
     console.log("nftsArray :", nftsArray);
-    console.log(`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${nftsArray[0].ipfsHash}`)
+    console.log(typeof(`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${nftsArray[0].ipfsHash}`))
     // return nftsArray;
     }} catch (error) {
       console.error(error);
@@ -185,6 +179,16 @@ export const NFTMarketplaceProvider = ({ children }) => {
   }
 };
 
+    const getTransactionHistory = async (tokenId) => {
+      try{
+        const transactions = await contract.GetTransactionHistory(tokenId);
+        return transactions;
+      }
+      catch(error){
+        console.error(error); 
+      }
+    }
+
   // const updateNFT = async ({ id, cost }) => {
   //   try {
   //     console.log(signer);
@@ -204,29 +208,30 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const mintNFT2 = async ({ IpfsHash, price, royalityfee, title = "My NFT title", description = "Some Description...." }) => {
     if (connectedAccount) {
       try {
-      // console.log(signer)
-      // console.log(contract)
       const newContract = contract.connect(signer);
       const tx = await newContract.creatToken(IpfsHash, ethers.parseEther(`${price}`), royalityfee);
       const rc = await tx.wait();
       console.log(rc)
-      // Decode the Mint event
-      // const iface = new ethers.utils.Interface(mintEventAbi);
-      // const log = rc.logs.find(log => log.address === contractAddress && log.topics[0] === ethers.utils.id("Mint(address,uint256,string)"));
-      // const event = iface.parseLog(log);
-      // const tokenId = event.args.tokenId;
+      console.log(rc.logs[0].args[2].toString())
+      const tokenId = rc.logs[0].args[2].toString()
+      //token Id
+      //rc.logs[0].args.[[Target]][2]
+      console.log("Minted NFT Token ID:", tokenId);
+      const nft = await contract.GetNFTDetails(tokenId);
+        const creator = nft.creator;
+        const owner = nft.owner;
 
-      // console.log("Minted NFT Token ID:", tokenId);
       const new_nft = {
         IPFS_hash: IpfsHash,
-        // NFT_token_ID: parseInt(hash["_hex"], 16),
+        NFT_token_ID: tokenId,
         title: title,
         price: price,
         royalityfee: royalityfee,
         description: description,
+        creator: creator,
+        owner: owner,
       };
-
-      toast.success("NFT minted successfully.....");
+      toast.success("NFT minted successfully");
       // axios.post(online_url, new_nft).then((response) => {
       //   console.log("Success", response);
       // }).catch((error) => {
@@ -236,6 +241,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
       return new_nft;
     } catch (error) {
       reportError(error);
+      toast.error("Error minting NFT");
     }
   }
 else{
@@ -245,16 +251,20 @@ else{
 };
 
   const buyNFT = async (tokenId) => {
+    if(connectedAccount){
     try {
-      const getPrice = await contract.GetNftPrice(tokenId).call();
+      const getPrice = await contract.GetNftPrice(tokenId);
+      console.log(getPrice.toString());
       const price = ethers.parseEther(`${getPrice}`);
-      const signer = provider.getSigner();
-      const tx = await contract.connect(signer).buy(tokenId, { value: price });
+      console.log(price.toString());
+      const newContract = contract.connect(signer);
+      const tx = await newContract.buy(tokenId, { value: price });
       console.log(tx);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       reportError(error);
     }
+  }
   };
 
   // const signMessage = async (message, account) => {
@@ -298,6 +308,7 @@ else{
         nfts,
         getAllNFTs,
         getNFTDetails,
+        getTransactionHistory,
         connectWallet,
         mintNFT2,
         buyNFT,

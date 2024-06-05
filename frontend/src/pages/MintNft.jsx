@@ -5,6 +5,7 @@ import React from "react";
 import { useState } from "react";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const MintDiv = styled.div`
   width: 100%;
@@ -111,12 +112,18 @@ const MintNft = () => {
   const [royalityfee, setRoyalityfee] = useState("");
   const [ipfsHash, setIpfsHash] = useState("");
   const [selectedFile, setSelectedFile] = useState();
+  const [loading, setLoading] = useState(false);
+
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    if(loading){
+      toast.loading("Minting NFT")
+    };
     try {
       
       const formData = new FormData();
@@ -181,9 +188,9 @@ const MintNft = () => {
       setTitle("");
       setDescription("");
       setPrice("");
+      setLoading(false);
     } catch (error) {
       console.error("Error minting NFT:", error);
-      alert("Error minting NFT");
     }
   };
 

@@ -12,7 +12,7 @@ const Modal = ({close}) => {
   return (
     <>
     <div className='wrapper' onClick={close}></div>
-    <div className="bg-white flex flex-col items-center gap-5 px-5 pt-3 pb-8  rounded-lg w-[300px] md:w-[480px]
+    <div className="bg-white text-black flex flex-col items-center gap-5 px-5 pt-3 pb-8  rounded-lg w-[300px] md:w-[480px]
     " id='container'>
       <div className=' w-full'>
       <RxCross2 className='text-xl ml-auto'onClick={close}/>
