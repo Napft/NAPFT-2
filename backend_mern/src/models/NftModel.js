@@ -36,7 +36,7 @@ The NFT model contains these 5 sections
 
 const NFT_schema = new mongoose.Schema({
   IPFS_hash: { type: String, required: true },
-  NFT_token_ID: { type: Number, unique: true }, //required : true
+  NFT_token_ID: { type: String, unique: true }, //required : true
   is_public: { type: Boolean, default: true },
   section_price_info: {
     price_timeline: {
