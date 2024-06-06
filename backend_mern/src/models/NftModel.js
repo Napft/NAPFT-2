@@ -61,8 +61,8 @@ const NFT_schema = new mongoose.Schema({
     description: { type: String, required: false },
     media_type: { type: String, required: false, default: "image" },
     date_created: { type: Date, default: Date.now },
-    creator_metamask_ID: { type: String, required: true },
-    owner_metamask_ID: { type: String, required: true },
+    creator: { type: String, required: true },
+    owner: { type: String, required: true },
   },
   section_additional_info: {
     tags: { type: [String], default: [] },
