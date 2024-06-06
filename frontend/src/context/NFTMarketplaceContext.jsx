@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { toast } from "react-hot-toast";
+import axios from "axios";
 import {
   setGlobalState,
   getGlobalState,
@@ -231,12 +232,18 @@ export const NFTMarketplaceProvider = ({ children }) => {
         creator: creator,
         owner: owner,
       };
-      toast.success("NFT minted successfully");
-      // axios.post(online_url, new_nft).then((response) => {
-      //   console.log("Success", response);
-      // }).catch((error) => {
-      //   console.error("Error", error);
-      // });
+        toast.success("NFT minted successfully");
+        console.log(new_nft);
+
+      axios
+        .post(`${import.meta.env.HOST}/api/v1/nft/new_nft`, new_nft)
+        .then((response) => {
+          console.log("Success", response);
+          toast.success("nft stored in the database..");
+        })
+        .catch((error) => {
+          console.error("Error", error);
+        });
 
       return new_nft;
     } catch (error) {
