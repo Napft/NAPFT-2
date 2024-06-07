@@ -8,22 +8,26 @@ import toast from 'react-hot-toast';
 
 const Modal = ({close}) => {
   const { connectedAccount, connectWallet } = useNFTMarketplace();
+  const connectMetamask = () => {
+    connectWallet();
+    close();
+  }
 
   return (
     <>
     <div className='wrapper' onClick={close}></div>
-    <div className="bg-white text-black flex flex-col items-center gap-5 px-5 pt-3 pb-8  rounded-lg w-[300px] md:w-[480px]
+    <div className="bg-white text-black flex flex-col items-center gap-5 px-5 pt-3 pb-8  rounded-lg w-[300px] md:w-[480px] transition-all duration-700 ease-linear
     " id='container'>
-      <div className=' w-full'>
+      {/* <div className=' w-full'>
       <RxCross2 className='text-xl ml-auto'onClick={close}/>
-      </div>
+      </div> */}
       <div id="img" className="w-28 h-28 rounded-full bg-black p-2">
          <img src={logo} alt="" />
       </div>
       <h2 className='text-2xl font-semibold'>Connect to NapFT</h2>
 
       <div className='w-full rounded-md' id='wallets'>
-        <div onClick={(connectWallet)} className='flex gap-4 items-center w-full p-3 cursor-pointer'>
+        <div onClick={connectMetamask} className='flex gap-4 items-center w-full p-3 cursor-pointer'>
           <img src={ms} alt="" className='w-10 h-10' />
           <h1 className='text-lg font-semibold'>MetaMask</h1>
         </div>
