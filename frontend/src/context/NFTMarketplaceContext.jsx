@@ -23,6 +23,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const [signer, setSigner] = useState(null)
   const [connectedAccount, setConnectedAccount] = useState('');
   const [nfts, setNfts] = useState([]);
+  const [myNfts, setMyNfts] = useState([])
   const [connectedWalletId, setConnectedWalletId] = useState("");
 
   const getAlchemyProvider = async () => {
@@ -156,7 +157,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
     }
     setNfts(nftsArray);
     console.log("nftsArray :", nftsArray);
-    console.log(typeof(`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${nftsArray[0].ipfsHash}`))
+    console.log(import.meta.env.VITE_GATEWAY_URL)
     // return nftsArray;
     }} catch (error) {
       console.error(error);
@@ -173,7 +174,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
         const price = nft.price;
         const ipfsHash = nft.IpfsHash;
         console.log("creator: ", creator, "owner: ", owner, "price: ", price.toString(), "ipfsHash: ", ipfsHash)
-      }
+      } 
     }
   catch(error){
     console.error(error);
@@ -189,6 +190,33 @@ export const NFTMarketplaceProvider = ({ children }) => {
         console.error(error); 
       }
     }
+
+    const myNFTs = async (provider) => {
+        try{
+          if(contract){
+            const tokenCount = await contract.GetCurrentToken();
+            console.log(tokenCount);
+      const myNfts = []
+      for (let i = 1; i <= tokenCount; i++) {
+        const nfts = await contract.GetNFTDetails(i);
+        if(nfts.owner == provider){
+          const price = nfts.price;
+          const ipfsHash = nfts.IpfsHash;
+          console.log("price : ", price, "ipfsHash : ", ipfsHash)
+        }
+        myNfts.push({ 
+          id: i, 
+          ipfsHash: ipfsHash, 
+          price: ethers.formatEther(`${price}`),
+        });
+        setMyNfts(myNfts)
+      }}}
+        catch(error){
+          console.log(error)
+        }
+    }
+  
+  
 
   // const updateNFT = async ({ id, cost }) => {
   //   try {
@@ -313,6 +341,7 @@ else{
         contract,
         connectedAccount,
         nfts,
+        myNfts,
         getAllNFTs,
         getNFTDetails,
         getTransactionHistory,

@@ -1,9 +1,10 @@
 
 import { Link } from "react-router-dom"; 
 import {motion} from 'framer-motion';
-
-
+import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
 const OwnedNFT = ({Name , des , img , price}) => {
+  const { myNfts } = useNFTMarketplace();
+  
   return (
     <motion.div whileHover={{y:10}} transition={{type:"spring", bounce:0.8}}  className="text-left w-80 overflow-hidden cursor-pointer shadow-md shadow-blue-400 rounded-xl" >
       <div className="w-full h-72 overflow-hidden">
