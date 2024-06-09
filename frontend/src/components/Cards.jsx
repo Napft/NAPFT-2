@@ -18,7 +18,7 @@ useEffect(() => {
         ) : (
                 nfts.map((nft, index) => (
                     
-                      <SingleNFTcard key={index} img={`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${nft.ipfsHash}`} Id = {nft.id} price = {nft.price} royalty = {nft.royalty} />
+                      <SingleNFTcard key={index} cid={nft.ipfsHash} Id = {nft.id} price = {nft.price} royalty = {nft.royalty} />
                        
                     
 )))}
