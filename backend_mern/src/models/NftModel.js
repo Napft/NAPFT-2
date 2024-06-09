@@ -40,7 +40,7 @@ const NFT_schema = new mongoose.Schema({
   is_public: { type: Boolean, default: true },
   section_price_info: {
     price_timeline: {
-      type: [{ timestamp: Date, price: Number, royalty_fee :Number}],
+      type: [{ timestamp: Date, price: String, royalty_fee: String }],
       validate: {
         validator: validate_price_timeline,
         message: "The price timeline needs to have atleast one record",

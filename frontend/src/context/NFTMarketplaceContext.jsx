@@ -262,9 +262,9 @@ export const NFTMarketplaceProvider = ({ children }) => {
       };
         toast.success("NFT minted successfully");
         console.log(new_nft);
-
+        console.log(import.meta.env.VITE_HOST);
       axios
-        .post(`${import.meta.env.HOST}/api/v1/nft/new_nft`, new_nft)
+        .post(`${import.meta.env.VITE_HOST}/api/v1/nft/new_nft`, new_nft)
         .then((response) => {
           console.log("Success", response);
           toast.success("nft stored in the database..");

@@ -194,23 +194,25 @@ const MintNft = () => {
     }
   };
 
-    // const handleCheck = async(e) => {
+  //   const handleCheck = async(e) => {
   //   e.preventDefault();
   //   try {
   //     const new_nft = {
-  //       IPFS_hash: "asdfsdft",
-  //       NFT_token_ID: 1232343244,
+  //       IPFS_hash: "QmVurUv231PmTyjdS6Xt1v4QrsQ9fyREUcy4RjUb3gMkGH",
+  //       NFT_token_ID: "32",
   //       title: "asdasg",
-  //       price: 5003,
+  //       price: "0.12",
+  //       royalityfee: "4",
   //       description: "asdadad",
-  //       creator_metamask_ID: "sdasdadf",
-  //       owner_metamask_ID: "asdadafsd",
+  //       creator: "0x1096926466B85767C610B4C4B44f6863917F97a3",
+  //       owner: "0x1096926466B85767C610B4C4B44f6863917F97a3",
   //     };
 
   //     console.log("New NFT:", new_nft);
-  //     const online_url = "http://localhost:8800/api/v1/nft/new_nft";
+  //     const online_url = `${import.meta.env.HOST}/api/v1/nft/new_nft`;
+  //     console.log(import.meta.env.VITE_HOST);
   //     axios
-  //       .post(online_url, new_nft)
+  //       .post(`${import.meta.env.VITE_HOST}/api/v1/nft/new_nft`, new_nft)
   //       .then((response) => {
   //         console.log("Success", response);
   //       })
