@@ -8,6 +8,9 @@ export const testNft = async (req, res) => {
   });
 };
 //New NFT creation
+//POST METHOD
+//PUBLIC API  = http://localhost:8800/api/v1/nft/new_nft
+
 export const newNft = async (req, res) => {
   try {
     const {
@@ -66,6 +69,9 @@ export const newNft = async (req, res) => {
   }
 };
 //get recent NFTS
+//GET METHOD
+//PUBLIC API  = http://localhost:8800/api/v1/nft/get_recent_nft
+
 export const get_newlyCreated_Nft = async (req, res) => {
   try {
     const nfts = await NFT_model.find().sort({ NFT_token_ID: -1 }).limit(3).exec();
@@ -81,3 +87,22 @@ export const get_newlyCreated_Nft = async (req, res) => {
     })
   }
 }
+// Get all NFTS 
+//GET METHOD
+//PUBLIC API  = http://localhost:8800/api/v1/nft/All_NFTs
+export const get_ALL_Nft = async (req, res) => {
+  try {
+    const nfts = await NFT_model.find();
+    return res.status(200).json({
+      success: true,
+      message: "fetching All NFTs data is successfull",
+      nfts,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: "error in fetching ALL NFTs",
+    });
+  }
+};
+
