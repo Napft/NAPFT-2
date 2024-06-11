@@ -18,8 +18,10 @@ const Details = () => {
   const { nfts } = useNFTMarketplace();
 
   const location = useLocation();
-  const { img, price, royalty } = location.state || {};
-
+  const queryParams = new URLSearchParams(location.search);
+  const cid = queryParams.get('cid');
+  const price = queryParams.get('price');
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -35,7 +37,7 @@ const Details = () => {
               <FaRegHeart className="icon" />
             </div>
           </div>
-          <img src={nft} />
+          <img src={`https://${import.meta.env.VITE_GATEWAY_URL}/ipfs/${cid}`} />
         </div>
 
         {/* details */}
