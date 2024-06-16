@@ -16,11 +16,13 @@ const Details = () => {
   const collections = [...Array(8)];
   // const hasCollections = collections.length > 0;
   const { nfts } = useNFTMarketplace();
+  const {buyNFT} = useNFTMarketplace();
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const cid = queryParams.get('IPFS_hash');
   const price = queryParams.get('latestPrice');
+  const token_ID = queryParams.get('NFT_token_ID');
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -79,7 +81,7 @@ const Details = () => {
               {price} MATIC <span className="inDollars">$1,3322</span>
             </p>
             <div className="buttonDiv">
-              <button className="buyButton">Buy </button>
+              <button className="buyButton" onClick={() => buyNFT(token_ID)}>Buy </button>
               <button className="offerButton">Make offer </button>
             </div>
           </div>
