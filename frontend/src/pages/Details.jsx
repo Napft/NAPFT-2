@@ -19,8 +19,8 @@ const Details = () => {
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const cid = queryParams.get('cid');
-  const price = queryParams.get('price');
+  const cid = queryParams.get('IPFS_hash');
+  const price = queryParams.get('latestPrice');
   
   useEffect(() => {
     window.scrollTo(0, 0);

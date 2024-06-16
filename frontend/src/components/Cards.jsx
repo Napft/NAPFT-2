@@ -1,30 +1,49 @@
-                                                                                                                                                              import SingleNFTcard from "./SingleNFTcard";
-import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
+import Axios from 'axios';
+import SingleNFTcard from './SingleNFTcard';
 import { useEffect, useState } from 'react';
 
 function Cards() {
-  const { getAllNFTs, nfts } = useNFTMarketplace();
-useEffect(() => {
-  getAllNFTs();
-}, [])
+  const [nfts, setNfts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await Axios.get('http://localhost:8800/api/v1/nft/All_NFTs');
+        if (res.status !== 200) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        setNfts(res.data.nfts);
+      } catch (err) {
+        setError(`Failed to fetch NFTs: ${err.message}`);
+        console.error('Error fetching NFTs:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <p className="text-slate-300 font-light">Loading NFTs...</p>;
+  }
+
+  if (error) {
+    return <p className="text-red-500 font-light">{error}</p>;
+  }
+
   return (
     <>
-    <h2 className="text-white text-3xl mt-5 font-semibold ">Our Collections</h2>
-    <div className="flex justify-center items-center flex-wrap gap-8 mt-8 w-[90%] mx-auto">
-    {!nfts.length ? (
-          <p className="text-slate-300 font-light">Loading NFTs...</p>
+      <h2 className="text-white text-3xl mt-5 font-semibold">Our Collections</h2>
+      <div className="flex justify-center items-center flex-wrap gap-8 mt-8 w-[90%] mx-auto">
+        {nfts.length === 0 ? (
+          <p className="text-slate-300 font-light">No NFTs available</p>
         ) : (
-                nfts.map((nft, index) => (
-                    
-                      <SingleNFTcard key={index} cid={nft.ipfsHash} Id = {nft.id} price = {nft.price} royalty = {nft.royalty} />
-                       
-                    
-)))}
-            
-      
-    </div>
+          nfts.map((nft, index) => <SingleNFTcard key={index} nft={nft} />)
+        )}
+      </div>
     </>
   );
 }

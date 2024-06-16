@@ -10,8 +10,10 @@ import UserRouter from "./src/routers/UserRouter/User.Router.js";
 
 const app = express();
 dotenv.config();
+
 app.use(cors());
 const allowedOrigins = ["http://localhost:5173", "http://localhost:4000"];
+
 app.use(
   cors({
     origin: function (origin, callback) {
