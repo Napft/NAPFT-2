@@ -7,9 +7,11 @@ import { RiNftFill } from "react-icons/ri";
 import { SlGraph } from "react-icons/sl";
 import { FaCircleExclamation } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
+import SingleNFTcard from "../components/SingleNFTcard";
+import Axios from "axios";
 
 const Details = () => {
   // const collections = [...Array(8)];
@@ -20,10 +22,31 @@ const Details = () => {
   const queryParams = new URLSearchParams(location.search);
   const cid = queryParams.get('IPFS_hash');
   const price = queryParams.get('latestPrice');
+  const token_ID = queryParams.get('NFT_token_ID');
+  const title = queryParams.get('title')
+  const description = queryParams.get('description')
   
+ 
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+    const fetchData = async () => {
+      
+      try {
+        const res = await Axios.get('http://localhost:8800/api/v1/nft/All_NFTs');
+        if (res.status !== 200) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        setNfts(res.data.nfts);
+      } catch (err) {
+        
+        console.error(`Failed to fetch NFTs: ${err.message}`);
+      } 
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="parentDiv1">
@@ -43,7 +66,7 @@ const Details = () => {
         <div className="nftAbout">
           <div className="userDiv">
             <p className="user">User</p>
-            <p className="nftname">NFT NAME</p>
+            <p className="nftname">{title}</p>
             <p className="by">
               Owned by <span className="id"></span>
             </p>
@@ -65,7 +88,7 @@ const Details = () => {
           <div className="desc">
             <div className="descHead">
               <FaCircleExclamation className="descIcon" />
-              <p> Description </p>
+              <p> {description} </p>
             </div>
 
             <div className="innerDesc">
