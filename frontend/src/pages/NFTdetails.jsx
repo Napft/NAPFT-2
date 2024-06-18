@@ -72,3 +72,4 @@ const NFTdetails = () => {
 }
 
 export default NFTdetails
+

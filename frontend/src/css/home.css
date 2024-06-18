@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+15&display=swap");
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shine {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem blueviolet,
+      -0.2rem 0.1rem 1rem rgb(154, 79, 224), 0.2rem 0.1rem 1rem #570b36,
+      0 -0.5rem 2rem blueviolet, 0 0.5rem 3rem blueviolet;
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.85;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  11% {
+    opacity: 0.922;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  14% {
+    opacity: 0.95;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.9;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.9;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.93;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem blueviolet,
+      -0.2rem 0.1rem 1rem rgb(154, 79, 224), 0.2rem 0.1rem 1rem #570b36,
+      0 -0.5rem 2rem blueviolet, 0 0.5rem 3rem blueviolet;
+  }
+  28%,
+  33% {
+    color: rgb(80, 80, 235);
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: rgb(80, 80, 235);
+    text-shadow: none;
+  }
+}
+
+.parentDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  background: linear-gradient(270deg, #060338, #050400, #1f064a, #270525);
+  background-size: 600% 600%;
+  animation: moveBackground 10s ease infinite;
+}
+.homeDiv {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.textDiv {
+  z-index: 1;
+  margin: 0 30px;
+  display: flex;
+  font-weight: 600;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fastFlicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+}
+.header1 {
+  font-size: 2rem;
+  font-weight: 700;
+  position: absolute;
+  width: 90%;
+  margin: 0;
+  bottom: 40px;
+}
+.header2 {
+  position: absolute;
+  left: 120px;
+  width: 20%;
+  font-size: 8rem;
+  color: white;
+  font-family: "Jersey 15", sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* .nfts {
+  color: blue;
+} */
+
+.innerText {
+  position: absolute;
+  right: 0;
+  bottom: 200px;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.body {
+  position: absolute;
+  bottom: 90px;
+  width: 100%;
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 600;
+  text-shadow: 0 0 0.6rem #ffe6ff1f, 0 0 1.5rem blueviolet,
+    -0.2rem 0.1rem 1rem rgb(154, 79, 224), 0.2rem 0.1rem 1rem #570b36,
+    0 -0.5rem 2rem blueviolet, 0 0.5rem 3rem blueviolet;
+  animation: shine 2s forwards, flicker 3s infinite;
+  text-transform: uppercase;
+}
+
+.btn {
+  padding: 5px 20px;
+  width: 200px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: 1px solid blue;
+  cursor: pointer;
+  transition: 0.5s;
+  overflow: hidden;
+  position: absolute;
+  bottom: -15px;
+}
+
+.btn:hover {
+  background: none;
+  box-shadow: 0 0 15px rgb(46, 1, 195);
+}
+
+.buttonDiv {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.imageDiv {
+  margin-top: 5rem;
+  width: 50%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeImg {
+  width: 90%;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0)
+  ); /* For WebKit browsers */
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0)
+  ); /* Standard */
+}
+
+/* Responsiveness */
+@media screen and (max-width: 750px) {
+  .homeDiv {
+    display: flex;
+    flex-direction: column-reverse;
+    position: static;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .textDiv {
+    z-index: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    position: static;
+    width: 90%;
+    height: auto;
+    /* text-align: center; */
+  }
+
+  .flicker {
+    animation: shine 2s forwards, blink 3s 2s infinite;
+  }
+
+  .fastFlicker {
+    animation: shine 2s forwards, blink 10s 1s infinite;
+  }
+  .header1 {
+    font-size: 2rem;
+    font-weight: 700;
+    position: static;
+    width: 90%;
+    margin: 0;
+    bottom: 40px;
+  }
+  .header2 {
+    position: static;
+    /* left: 120px; */
+    width: 100%;
+    font-size: 8rem;
+    color: white;
+    font-family: "Jersey 15", sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  /* .nfts {
+    color: blue;
+  } */
+
+  .innerText {
+    position: static;
+    right: 0;
+    bottom: 200px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .body {
+    position: static;
+    bottom: 90px;
+    width: 100%;
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 600;
+    text-shadow: 0 0 0.6rem #ffe6ff1f, 0 0 1.5rem blueviolet,
+      -0.2rem 0.1rem 1rem rgb(154, 79, 224), 0.2rem 0.1rem 1rem #570b36,
+      0 -0.5rem 2rem blueviolet, 0 0.5rem 3rem blueviolet;
+    animation: shine 2s forwards, flicker 3s infinite;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    padding: 5px 20px;
+    width: 200px;
+    font-size: 18px;
+    border-radius: 20px;
+    border: 1px solid blue;
+    cursor: pointer;
+    transition: 0.5s;
+    overflow: hidden;
+    position: static;
+    bottom: -15px;
+  }
+
+  .btn:hover {
+    background: none;
+    box-shadow: 0 0 15px rgb(46, 1, 195);
+  }
+
+  .buttonDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .imageDiv {
+    margin-top: 5rem;
+    display: flex;
+    position: static;
+    overflow: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .homeImg {
+    width: 1000px;
+  }
+}
