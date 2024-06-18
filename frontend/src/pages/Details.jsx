@@ -1,5 +1,4 @@
 import "../css/details.css";
-import nft from "../assets/nft-3.jpeg";
 import { FaShare } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
@@ -13,9 +12,9 @@ import { useLocation } from "react-router-dom";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
 
 const Details = () => {
-  const collections = [...Array(8)];
+  // const collections = [...Array(8)];
   // const hasCollections = collections.length > 0;
-  const { nfts } = useNFTMarketplace();
+  const { nfts, buyNFT } = useNFTMarketplace();
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -46,7 +45,7 @@ const Details = () => {
             <p className="user">User</p>
             <p className="nftname">NFT NAME</p>
             <p className="by">
-              Owned by <span className="id">23G556</span>
+              Owned by <span className="id"></span>
             </p>
           </div>
 
@@ -76,10 +75,10 @@ const Details = () => {
           <div className="priceDiv">
             <p className="price">Current price</p>
             <p className="eth">
-              {price} MATIC <span className="inDollars">$1,3322</span>
+              {price} MATIC 
             </p>
             <div className="buttonDiv">
-              <button className="buyButton">Buy </button>
+              <button className="buyButton" onClick={()=>buyNFT(38)}>Buy </button>
               <button className="offerButton">Make offer </button>
             </div>
           </div>
@@ -109,7 +108,7 @@ const Details = () => {
                     >
                       <div className="imageContainer">
                         <img
-                          src={`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${
+                          src={`https://${import.meta.env.VITE_GATEWAY_URL}/ipfs/${
                             nft.ipfsHash
                           }`}
                           className="cardImage"
