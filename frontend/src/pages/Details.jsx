@@ -8,14 +8,18 @@ import { RiNftFill } from "react-icons/ri";
 import { SlGraph } from "react-icons/sl";
 import { FaCircleExclamation } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
+import SingleNFTcard from "../components/SingleNFTcard";
+import Axios from "axios";
 
 const Details = () => {
+  const [nfts, setNfts] = useState([]);
   const collections = [...Array(8)];
+  
   // const hasCollections = collections.length > 0;
-  const { nfts } = useNFTMarketplace();
+
   const {buyNFT} = useNFTMarketplace();
 
   const location = useLocation();
@@ -23,10 +27,30 @@ const Details = () => {
   const cid = queryParams.get('IPFS_hash');
   const price = queryParams.get('latestPrice');
   const token_ID = queryParams.get('NFT_token_ID');
+  const title = queryParams.get('title')
+  const description = queryParams.get('description')
   
+ 
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+    const fetchData = async () => {
+      
+      try {
+        const res = await Axios.get('http://localhost:8800/api/v1/nft/All_NFTs');
+        if (res.status !== 200) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        setNfts(res.data.nfts);
+      } catch (err) {
+        
+        console.error(`Failed to fetch NFTs: ${err.message}`);
+      } 
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="parentDiv1">
@@ -46,7 +70,7 @@ const Details = () => {
         <div className="nftAbout">
           <div className="userDiv">
             <p className="user">User</p>
-            <p className="nftname">NFT NAME</p>
+            <p className="nftname">{title}</p>
             <p className="by">
               Owned by <span className="id">23G556</span>
             </p>
@@ -68,7 +92,7 @@ const Details = () => {
           <div className="desc">
             <div className="descHead">
               <FaCircleExclamation className="descIcon" />
-              <p> Description </p>
+              <p> {description} </p>
             </div>
 
             <div className="innerDesc">
@@ -103,27 +127,29 @@ const Details = () => {
               <div className="carousel">
                 {nfts.length > 0 ? (
                   nfts.map((nft, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ y: 10 }}
-                      transition={{ type: "spring", bounce: 0.8 }}
-                      className="card"
-                    >
-                      <div className="imageContainer">
-                        <img
-                          src={`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${
-                            nft.ipfsHash
-                          }`}
-                          className="cardImage"
-                          alt={`NFT ${index}`}
-                        />
-                      </div>
-                      <div className="cardDetails">
-                        <p className="price">{nft.price} MATIC</p>
-                        <p className="percentage">{nft.royalty}%</p>
-                      </div>
-                      <button className="buyBtn">Buy</button>
-                    </motion.div>
+                    // <motion.div
+                    //   key={index}
+                    //   whileHover={{ y: 10 }}
+                    //   transition={{ type: "spring", bounce: 0.8 }}
+                    //   className="card"
+                    // >
+                    //   <div className="imageContainer">
+                    //     <img
+                    //       src={`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${
+                    //         nft.ipfsHash
+                    //       }`}
+                    //       className="cardImage"
+                    //       alt={`NFT ${index}`}
+                    //     />
+                    //   </div>
+                    //   <div className="cardDetails">
+                    //     <p className="price">{nft.price} MATIC</p>
+                    //     <p className="percentage">{nft.royalty}%</p>
+                    //   </div>
+                    //   <button className="buyBtn">Buy</button>
+                    // </motion.div>
+
+                    <SingleNFTcard key={index} nft={nft}/>
                   ))
                 ) : (
                   <div className="noCollection">

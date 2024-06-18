@@ -20,7 +20,7 @@ const SingleNFTcard = ({ nft }) => {
 
   const latestPrice = price_timeline.length ? price_timeline[price_timeline.length - 1].price : 'N/A';
 
-  const queryParams = new URLSearchParams({ IPFS_hash, latestPrice , NFT_token_ID });
+  const queryParams = new URLSearchParams({ IPFS_hash, latestPrice , NFT_token_ID , title , description});
 
   return (
     <Link to={`/details?${queryParams.toString()}`}>
@@ -28,6 +28,7 @@ const SingleNFTcard = ({ nft }) => {
         whileHover={{ y: 10 }} 
         transition={{ type: "spring", bounce: 0.8 }} 
         className="text-left w-80 overflow-hidden cursor-pointer shadow-md shadow-blue-400 rounded-xl"
+        onClick={()=>window.scrollTo(0, 0)}
       >
         <div className="w-full h-72 overflow-hidden">
           <img 
