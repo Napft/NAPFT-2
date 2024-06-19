@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const FooterDiv = styled.div`
-  background-color: #1c1f2b;
+  background-color: #01012cec;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

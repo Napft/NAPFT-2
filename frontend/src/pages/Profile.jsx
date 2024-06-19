@@ -7,7 +7,6 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import videoSource from "../assets/sun_-_46410 (1440p).mp4";
 import { Link } from "react-router-dom";
-// import videoSource1 from "../../assets/Bone White Blue Groovy You Matter Desktop Wallpaper (2).mp4";
 
 function Profile() {
   useEffect(() => {

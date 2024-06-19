@@ -1,15 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { createContext, useContext, useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import PropTypes from 'prop-types';
 import {
-  setGlobalState,
   getGlobalState,
 } from '../store';
 import {
   contractAddress,
   abi
-} from '../context/secret';
+} from './secret';
 
 const NFTMarketplaceContext = createContext();
 
@@ -24,6 +25,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const [connectedAccount, setConnectedAccount] = useState('');
   const [nfts, setNfts] = useState([]);
   const [myNfts, setMyNfts] = useState([])
+  // eslint-disable-next-line no-unused-vars
   const [connectedWalletId, setConnectedWalletId] = useState("");
 
   const getAlchemyProvider = async () => {
@@ -157,7 +159,6 @@ export const NFTMarketplaceProvider = ({ children }) => {
     }
     setNfts(nftsArray);
     console.log("nftsArray :", nftsArray);
-    console.log(import.meta.env.VITE_GATEWAY_URL)
     // return nftsArray;
     }} catch (error) {
       console.error(error);
@@ -203,14 +204,14 @@ export const NFTMarketplaceProvider = ({ children }) => {
           const price = nfts.price;
           const ipfsHash = nfts.IpfsHash;
           console.log("price : ", price, "ipfsHash : ", ipfsHash)
-        }
+        
         myNfts.push({ 
           id: i, 
           ipfsHash: ipfsHash, 
           price: ethers.formatEther(`${price}`),
         });
         setMyNfts(myNfts)
-      }}}
+          }}}}
         catch(error){
           console.log(error)
         }
@@ -288,11 +289,9 @@ else{
   const buyNFT = async (tokenId) => {
     if(connectedAccount){
     try {
-      const getPrice = await contract.GetNftPrice(tokenId);
-      console.log(getPrice.toString());
-      const price = ethers.parseEther(`${getPrice}`);
-      console.log(price.toString());
       const newContract = contract.connect(signer);
+      const price = await contract.GetNftPrice(tokenId);
+      console.log(price.toString());
       const tx = await newContract.buy(tokenId, { value: price });
       console.log(tx);
     } catch (error) {
@@ -312,26 +311,26 @@ else{
   //   }
   // };
 
-  const authenticate = async () => {
-    try {
-      let account = getGlobalState("connectedAccount");
-      if (account !== "") {
-        const message = "Hello, from your NFT Marketplace";
-        const signature = await signMessage(message, account);
-        console.log(signature);
-        // Implement logic to verify signature on backend (if applicable)
-      }
-    } catch (error) {
-      console.error(error);
-      reportError(error);
-    }
-  };
+  // const authenticate = async () => {
+  //   try {
+  //     let account = getGlobalState("connectedAccount");
+  //     if (account !== "") {
+  //       const message = "Hello, from your NFT Marketplace";
+  //       const signature = await signMessage(message, account);
+  //       console.log(signature);
+  //       // Implement logic to verify signature on backend (if applicable)
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     reportError(error);
+  //   }
+  // };
 
   useEffect(() => {
-    getAlchemyContract();
-    isWalletConnected();
+    // getAlchemyContract();
+    // isWalletConnected();
 
-  }, []);
+  });
 
   return (
     <NFTMarketplaceContext.Provider
@@ -350,12 +349,15 @@ else{
         buyNFT,
         // updateNFT,
         isWalletConnected,
-        authenticate,
       }}
     >
       {children}
     </NFTMarketplaceContext.Provider>
   );
+};
+
+NFTMarketplaceProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default NFTMarketplaceContext;

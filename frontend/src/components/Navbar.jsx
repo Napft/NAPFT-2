@@ -21,13 +21,13 @@ const fadeInUpAnimation = keyframes`
 `;
 
 const HomeDiv = styled.div`
-  background-color: #1c1f2b;
+  background-color: #01012cec;
   position: fixed;
   width: 100%;
   z-index: 1000;
   @media screen and (max-width: 900px) {
     height: max-content;
-    padding: 1rem 10px;
+    padding: 0 10px;
     width: 100%;
   }
 `;
@@ -37,7 +37,7 @@ const HomeContainer = styled.div`
   justify-content: space-evenly;
   width: 100%;
   margin: 2px;
-  padding: 10px 0px;
+  padding: 9px 0px;
   @media screen and (max-width: 900px) {
     display: none;
   }
@@ -108,7 +108,7 @@ const DropdownMenu = styled.div`
   left: 0;
   width: 100%;
   height: 240px;
-  background-color: #1c1f2b;
+  background-color: #01012cec;
   animation: ${fadeInUpAnimation} 0.5s ease-in-out; /* Applying the animation */
 `;
 

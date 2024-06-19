@@ -1,11 +1,8 @@
-
-import nft from '../assets/nft-2.jpeg'
 import { FaRegHeart } from "react-icons/fa";
 import chainlogo from '../assets/polygon.png'
 import { useState,useEffect } from 'react';
 import { SlGraph } from "react-icons/sl";
 import { motion } from 'framer-motion';
-import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
 import { useLocation } from 'react-router-dom';
 
 const NFTdetails = () => {
@@ -75,3 +72,4 @@ const NFTdetails = () => {
 }
 
 export default NFTdetails
+

@@ -1,5 +1,4 @@
 import "../css/details.css";
-import nft from "../assets/nft-3.jpeg";
 import { FaShare } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
@@ -22,9 +21,9 @@ const Details = () => {
 
   const collections = [...Array(8)];
   
+  // const collections = [...Array(8)];
   // const hasCollections = collections.length > 0;
-
-  const {buyNFT} = useNFTMarketplace();
+  const { nfts, buyNFT } = useNFTMarketplace();
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -78,6 +77,7 @@ const Details = () => {
             <p className="nftname">{title}</p>
             <p className="by">
               Owned by <span className="id cursor-pointer text-blue-500" onClick={() => setshowowner(!showowner)}>{showowner == false ? owner.substring(0,9) + '...' : owner}</span>
+              Owned by <span className="id"></span>
             </p>
           </div>
 
@@ -107,10 +107,11 @@ const Details = () => {
           <div className="priceDiv">
             <p className="price">Current price</p>
             <p className="eth">
-              {price} MATIC <span className="inDollars">$1,3322</span>
+              {price} MATIC 
             </p>
             <div className="buttonDiv">
               <button className="buyButton" onClick={() => { buyNFT(token_ID); setshowloader(true)}} >Buy </button>
+              <button className="buyButton" onClick={()=>buyNFT(38)}>Buy </button>
               <button className="offerButton">Make offer </button>
             </div>
           </div>
@@ -155,6 +156,28 @@ const Details = () => {
                     // </motion.div>
 
                     <SingleNFTcard key={index} nft={nft}/>
+                  nfts.map((nft, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover={{ y: 10 }}
+                      transition={{ type: "spring", bounce: 0.8 }}
+                      className="card"
+                    >
+                      <div className="imageContainer">
+                        <img
+                          src={`https://${import.meta.env.VITE_GATEWAY_URL}/ipfs/${
+                            nft.ipfsHash
+                          }`}
+                          className="cardImage"
+                          alt={`NFT ${index}`}
+                        />
+                      </div>
+                      <div className="cardDetails">
+                        <p className="price">{nft.price} MATIC</p>
+                        <p className="percentage">{nft.royalty}%</p>
+                      </div>
+                      <button className="buyBtn">Buy</button>
+                    </motion.div>
                   ))
                 ) : (
                   <div className="noCollection">
