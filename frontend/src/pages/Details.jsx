@@ -19,11 +19,11 @@ const Details = () => {
   const [showowner , setshowowner] = useState(false);
   const [showLoader , setshowloader] = useState(false);
 
-  const collections = [...Array(8)];
+  
   
   // const collections = [...Array(8)];
   // const hasCollections = collections.length > 0;
-  const { nfts, buyNFT } = useNFTMarketplace();
+  const { buyNFT } = useNFTMarketplace();
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -77,7 +77,7 @@ const Details = () => {
             <p className="nftname">{title}</p>
             <p className="by">
               Owned by <span className="id cursor-pointer text-blue-500" onClick={() => setshowowner(!showowner)}>{showowner == false ? owner.substring(0,9) + '...' : owner}</span>
-              Owned by <span className="id"></span>
+            
             </p>
           </div>
 
@@ -133,51 +133,8 @@ const Details = () => {
               <div className="carousel">
                 {nfts.length > 0 ? (
                   nfts.reverse().map((nft, index) => (
-                    // <motion.div
-                    //   key={index}
-                    //   whileHover={{ y: 10 }}
-                    //   transition={{ type: "spring", bounce: 0.8 }}
-                    //   className="card"
-                    // >
-                    //   <div className="imageContainer">
-                    //     <img
-                    //       src={`${import.meta.env.VITE_GATEWAY_URL}/ipfs/${
-                    //         nft.ipfsHash
-                    //       }`}
-                    //       className="cardImage"
-                    //       alt={`NFT ${index}`}
-                    //     />
-                    //   </div>
-                    //   <div className="cardDetails">
-                    //     <p className="price">{nft.price} MATIC</p>
-                    //     <p className="percentage">{nft.royalty}%</p>
-                    //   </div>
-                    //   <button className="buyBtn">Buy</button>
-                    // </motion.div>
-
-                    <SingleNFTcard key={index} nft={nft}/>
-                  nfts.map((nft, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ y: 10 }}
-                      transition={{ type: "spring", bounce: 0.8 }}
-                      className="card"
-                    >
-                      <div className="imageContainer">
-                        <img
-                          src={`https://${import.meta.env.VITE_GATEWAY_URL}/ipfs/${
-                            nft.ipfsHash
-                          }`}
-                          className="cardImage"
-                          alt={`NFT ${index}`}
-                        />
-                      </div>
-                      <div className="cardDetails">
-                        <p className="price">{nft.price} MATIC</p>
-                        <p className="percentage">{nft.royalty}%</p>
-                      </div>
-                      <button className="buyBtn">Buy</button>
-                    </motion.div>
+                       <SingleNFTcard key={index} nft={nft}/>
+                 
                   ))
                 ) : (
                   <div className="noCollection">
