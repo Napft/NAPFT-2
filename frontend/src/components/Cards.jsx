@@ -41,7 +41,7 @@ function Cards() {
         {nfts.length === 0 ? (
           <p className="text-slate-300 font-light">No NFTs available</p>
         ) : (
-          nfts.map((nft, index) => <SingleNFTcard key={index} nft={nft} />)
+          nfts.reverse().map((nft, index) => <SingleNFTcard key={index} nft={nft} />)
         )}
       </div>
     </>
