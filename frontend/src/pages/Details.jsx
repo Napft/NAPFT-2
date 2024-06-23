@@ -23,6 +23,7 @@ const Details = () => {
   const cid = queryParams.get('IPFS_hash');
   const price = queryParams.get('latestPrice');
   const token_ID = queryParams.get('NFT_token_ID');
+  console.log(token_ID)
   const title = queryParams.get('title')
   const description = queryParams.get('description')
   
@@ -68,7 +69,7 @@ const Details = () => {
             <p className="user">User</p>
             <p className="nftname">{title}</p>
             <p className="by">
-              Owned by <span className="id"></span>
+              Owned by <span className="id">{token_ID}</span>
             </p>
           </div>
 
@@ -101,7 +102,7 @@ const Details = () => {
               {price} MATIC 
             </p>
             <div className="buttonDiv">
-              <button className="buyButton" onClick={()=>buyNFT(38)}>Buy </button>
+              <button className="buyButton" onClick={()=>buyNFT(token_ID)}>Buy </button>
               <button className="offerButton">Make offer </button>
             </div>
           </div>
