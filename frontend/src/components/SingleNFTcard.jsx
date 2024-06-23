@@ -20,7 +20,7 @@ const SingleNFTcard = ({ nft }) => {
 
   const latestPrice = price_timeline.length ? price_timeline[price_timeline.length - 1].price : 'N/A';
 
-  const queryParams = new URLSearchParams({ IPFS_hash, latestPrice , NFT_token_ID , title , description});
+  const queryParams = new URLSearchParams({ IPFS_hash, latestPrice , NFT_token_ID , title , description ,owner});
 
   return (
     <Link to={`/details?${queryParams.toString()}`}>

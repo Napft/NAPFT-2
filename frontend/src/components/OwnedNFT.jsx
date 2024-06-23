@@ -18,7 +18,7 @@ const OwnedNFT = ({ nft , own }) => {
 
   const latestPrice = price_timeline.length ? price_timeline[price_timeline.length - 1].price : 'N/A';
 
-  if(own !== owner){
+  if(own.toLowerCase() !== owner.toLowerCase()){
     return(null)
   }
 
