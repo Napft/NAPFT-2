@@ -12,7 +12,12 @@ const app = express();
 dotenv.config();
 
 app.use(cors());
-const allowedOrigins = ["http://localhost:5173", "http://localhost:4000"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:4000",
+  "https://napft.com",
+  "https://napft.com/",
+];
 
 app.use(
   cors({
