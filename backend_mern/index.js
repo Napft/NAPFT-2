@@ -17,6 +17,7 @@ const allowedOrigins = [
   "http://localhost:4000",
   "https://napft.com",
   "https://napft.com/",
+  "http://napft.com",
 ];
 
 app.use(
