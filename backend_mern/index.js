@@ -13,11 +13,11 @@ dotenv.config();
 
 app.use(cors());
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:4000",
-  "https://napft.com",
+  // "http://localhost:5173",
+  // "http://localhost:4000",
+  // "https://napft.com",
   "https://napft.com/",
-  "http://napft.com",
+  // "http://napft.com",
 ];
 
 app.use(
