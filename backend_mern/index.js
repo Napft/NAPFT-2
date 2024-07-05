@@ -83,6 +83,7 @@ app.use(
       }
     },
     credentials: true, // If you are using cookies or sessions
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS", // Allow these methods
   })
 );
 
