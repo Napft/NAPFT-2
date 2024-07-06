@@ -42,7 +42,9 @@ const Details = () => {
     const fetchData = async () => {
       
       try {
-        const res = await Axios.get('http://localhost:8800/api/v1/nft/All_NFTs');
+        const res = await Axios.get(
+          `${import.meta.env.VITE_HOST}/api/v1/nft/All_NFTs`
+        );
         if (res.status !== 200) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
