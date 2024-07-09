@@ -41,9 +41,9 @@ const SingleNFTcard = ({ nft }) => {
             className="w-full hover:scale-110 h-[100%] ease-in-out duration-500"
           />
         </div>
-        <div className="p-3 flex flex-col gap-3">
+        <div className="p-3 flex flex-col gap-2">
+        <p className="text-slate-200 text-xl font-bold">{title}</p>
           <p className="text-slate-200 font-semibold">{latestPrice} MATIC</p>
-          <p className="text-slate-200 font-semibold">- %</p>
         </div>
         <button className="bg-slate-800 w-full py-2 text-white text-lg hover:bg-slate-900">Buy</button>
       </motion.div>

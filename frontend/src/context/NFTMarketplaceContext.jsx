@@ -244,8 +244,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
       console.log(rc)
       console.log(rc.logs[0].args[2].toString())
       const tokenId = rc.logs[0].args[2].toString()
-      //token Id
-      //rc.logs[0].args.[[Target]][2]
+      //token Id 
       console.log("Minted NFT Token ID:", tokenId);
       const nft = await contract.GetNFTDetails(tokenId);
         const creator = nft.creator;
@@ -290,7 +289,7 @@ else{
     if(connectedAccount){
     try {
       const newContract = contract.connect(signer);
-      const price = await contract.GetNftPrice(tokenId);
+      const price = contract.GetNftPrice(tokenId);
       console.log(price.toString());
       const tx = await newContract.buy(tokenId, { value: price });
       console.log(tx);
@@ -298,6 +297,9 @@ else{
       // console.error(error);
       reportError(error);
     }
+  } else{
+    toast.error("Please connect wallet");
+    console.log("Please connect wallet");
   }
   };
 

@@ -1,4 +1,4 @@
-import  { useRef, useEffect } from 'react';
+import  {                useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css'
@@ -11,7 +11,7 @@ import {motion} from 'framer-motion';
 import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
 
 const MarketPlace = () => {
-  const swiperRef = useRef(null);
+  // const swiperRef = useRef(null);
   const { structuredNfts } = useNFTMarketplace();
   useEffect(() => {
     window.scrollTo(0,0);
