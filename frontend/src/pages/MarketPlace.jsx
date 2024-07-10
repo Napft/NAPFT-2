@@ -41,7 +41,7 @@ const MarketPlace = () => {
     id='swiper2'
     >
       <SwiperSlide>
-      <Link to='/details'><motion.div animate={{scale:1}} initial={{scale:0}} transition={{type:"tween", duration:0.5}}
+      <Link ><motion.div animate={{scale:1}} initial={{scale:0}} transition={{type:"tween", duration:0.5}}
           className="rec1 h-full relative  flex flex-col justify-center items-center text-white "
         > 
           {/* <div className="absolute inset-0 bg-black opacity-60"></div>
@@ -56,7 +56,7 @@ const MarketPlace = () => {
 
       <SwiperSlide>
 
-         <Link to='/details'><motion.div animate={{scale:1}} initial={{scale:0}}
+         <Link ><motion.div animate={{scale:1}} initial={{scale:0}}
           className="rec2 h-full relative  flex flex-col justify-center items-center text-white"
           
         > <Link to='/details'></Link>
@@ -74,7 +74,7 @@ const MarketPlace = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-      <Link to='/details'>
+      <Link >
         <motion.div animate={{scale:1}} initial={{scale:0}}
           className="rec3 h-full relative  flex flex-col justify-center items-center text-white">
             
