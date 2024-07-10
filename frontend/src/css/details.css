@@ -227,6 +227,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20%;
 }
 .collections {
   display: flex;
@@ -418,4 +419,36 @@ h3 {
   .desc{
     width: 90%;
   }
+  .imageDiv{
+    width: 75% !important;
+  }
+  .historyDiv{
+   
+  }
+  .collectionDiv{
+    padding-top: 100%;
+  }
+
+}
+
+@media screen and (max-width: 400px){
+
+  .carouselContainer {
+    width: 100%;
+    margin: 10px ;
+  }
+
+  .desc{
+    width: 90%;
+  }
+  .imageDiv{
+    width: 75% !important;
+  }
+  .collectionDiv{
+    padding-top: 100% !important;
+  }
+  .see{
+    padding-top: 30%;
+  }
+
 }
