@@ -114,7 +114,7 @@ const Details = () => {
             </p>
             <div className="buttonDiv">
               <button className="buyButton" onClick={() => { buyNFT(token_ID); setshowloader(true)}} >Buy </button>
-              <button className="buyButton" onClick={()=>buyNFT(38)}>Buy </button>
+              {/* <button className="buyButton" onClick={()=>buyNFT(38)}>Buy </button> */}
               <button className="offerButton">Make offer </button>
             </div>
           </div>
