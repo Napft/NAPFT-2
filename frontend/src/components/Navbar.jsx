@@ -2,13 +2,12 @@ import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { FaGripLines } from "react-icons/fa6";
 import { useState } from "react";
-import { truncate } from "../store/index";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
 // import Aos from "aos";
 // import "aos/dist/aos.css";
 import Modal from './Modal'
-
-
+import toast from "react-hot-toast";
+import { truncate } from "../store/index";
 const fadeInUpAnimation = keyframes`
   from {
     opacity: 0;
@@ -132,10 +131,9 @@ const SmallScreen = styled.div`
 `;
 
 const Navbar = () => {
-  const { connectedAccount, connectWallet } = useNFTMarketplace();
+  const { connectedAccount } = useNFTMarketplace();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const[showModal , setshowModal] = useState(false);
-
 
   let NavItems = ["Home", "MarketPlace", "AboutUs", "Profile"];
 
@@ -170,11 +168,12 @@ const Navbar = () => {
             ) : (
               <InnerButton onClick={() => setshowModal(true)}>Connect Wallet</InnerButton>
             )}
+            {/* <Wallet /> */}
             {connectedAccount ? (
             <Link to="/mint">
               <InnerButton>Mint your NFT</InnerButton>
             </Link>) : (
-              <InnerButton onClick={() => setshowModal(true)}>Mint your NFT</InnerButton>
+              <InnerButton onClick={() => toast.error("Please connect wallet")}>Mint your NFT</InnerButton>
             )}
           </ButtonDiv>
         </HomeContainer>
@@ -208,7 +207,7 @@ const Navbar = () => {
               <Link to="/mint">
                 <InnerButton>Mint your NFT</InnerButton>
               </Link>) : (
-                <InnerButton onClick={() => setshowModal(true)}>Mint your NFT</InnerButton>
+                <InnerButton onClick={() => toast.error("Please connect wallet")}>Mint your NFT</InnerButton>
               )}
                 </ButtonDiv>
               </DropdownMenu>

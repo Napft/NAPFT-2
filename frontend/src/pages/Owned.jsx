@@ -4,7 +4,7 @@ import Axios from "axios";
 import { useNFTMarketplace } from "../context/NFTMarketplaceContext";
 
 const Owned = () => {
-  const { connectedAccount, connectWallet } = useNFTMarketplace()
+  const { connectedAccount } = useNFTMarketplace()
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
