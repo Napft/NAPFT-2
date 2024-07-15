@@ -54,8 +54,15 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const connectWallet = async () => {
     try {
       if (!window.ethereum) {
-        toast.error("Please install Metamask extension in your browser")
-        throw new Error('Please install MetaMask');
+        if (/Mobi|Android|Tablet|iPad|iPhone/i.test(navigator.userAgent)) {
+          toast("Open MetaMask", {duration:   2000});
+          // Optionally, you can redirect to MetaMask app link if MetaMask mobile supports deep linking
+          window.location.href = "https://metamask.app.link/dapp/napft.com";
+          return;
+        } else{
+          toast.error("Please install Metamask extension in your browser")
+          throw new Error('Please install MetaMask');
+        }
       }
    
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });

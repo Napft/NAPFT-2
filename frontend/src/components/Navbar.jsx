@@ -131,7 +131,7 @@ const SmallScreen = styled.div`
 `;
 
 const Navbar = () => {
-  const { connectedAccount } = useNFTMarketplace();
+  const { connectedAccount, connectWallet } = useNFTMarketplace();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const[showModal , setshowModal] = useState(false);
 
@@ -166,7 +166,7 @@ const Navbar = () => {
               () => setshowModal(false),
               <InnerButton>{truncate(connectedAccount, 4, 4, 11)}</InnerButton>
             ) : (
-              <InnerButton onClick={() => setshowModal(true)}>Connect Wallet</InnerButton>
+              <InnerButton onClick={() => connectWallet()}>Connect Wallet</InnerButton>
             )}
             {/* <Wallet /> */}
             {connectedAccount ? (
@@ -201,7 +201,7 @@ const Navbar = () => {
               () => setshowModal(false),
               <InnerButton>{truncate(connectedAccount, 4, 4, 11)}</InnerButton>
             ) : (
-              <InnerButton onClick={() => setshowModal(true)}>Connect Wallet</InnerButton>
+              <InnerButton onClick={() => connectWallet()}>Connect Wallet</InnerButton>
             )}                  
             {connectedAccount ? (
               <Link to="/mint">
