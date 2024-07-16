@@ -70,8 +70,9 @@ export const NFTMarketplaceProvider = ({ children }) => {
       setConnectedWalletId(accounts[0]);
       const browserProvider = new ethers.providers.Web3Provider(window.ethereum);
         setProvider(browserProvider);
-        const signerInstance = await browserProvider.getSigner();
+        const signerInstance = browserProvider.getSigner();
         setSigner(signerInstance);
+        console.log(signerInstance);
         const contractWithSigner = new ethers.Contract(contractAddress, abi, signerInstance);
       setContract(contractWithSigner);
       toast.success("Wallet Connection Successfull");
@@ -90,7 +91,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
         console.log(connectedAccount)
         const browserProvider = new ethers.providers.Web3Provider(window.ethereum);
         setProvider(browserProvider);
-        const signerInstance = await browserProvider.getSigner();
+        const signerInstance = browserProvider.getSigner();
         setSigner(signerInstance);
         const contractWithSigner = new ethers.Contract(contractAddress, abi, signerInstance);
       setContract(contractWithSigner);
@@ -110,7 +111,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
           setConnectedAccount(accounts[0]);
           const browserProvider = new ethers.providers.Web3Provider(window.ethereum);
         setProvider(browserProvider);
-        const signerInstance = await browserProvider.getSigner();
+        const signerInstance = browserProvider.getSigner();
         setSigner(signerInstance);
         console.log(signerInstance);
         const contractWithSigner = new ethers.Contract(contractAddress, abi, signerInstance);
@@ -297,8 +298,9 @@ else{
     if(connectedAccount){
     try {
       console.log(contract);
-      const newContract = contract.connect(signer);
-      const price = contract.GetNftPrice(tokenId);
+      console.log(signer);
+      const newContract = await contract.connect(signer);
+      const price = await contract.GetNftPrice(tokenId);
       console.log(price.toString());
       const tx = await newContract.buy(tokenId, { value: price });
       console.log(tx);
@@ -307,9 +309,14 @@ else{
       // window.location.href = '/ownedNFTS';
     } catch (error) {
       console.error(error);
-      if (error.code === -32603 && error.data?.code === -32000) {
+      if (error.code === -32603 || error.data?.code === -32000) {
         toast.error(`Transaction failed\nInsufficient Balance`);
-      } 
+      }
+      
+      if(error.reason == "execution reverted: You can't buy your own NFT"){
+        console.error('Gas estimation failed: ', error.error.data?.message);
+        toast.error(`You can't buy your own NFT`);
+      }
     }
   } else{
     toast.error("Please connect wallet");

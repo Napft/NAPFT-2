@@ -9,9 +9,15 @@ import MintNft from "./pages/MintNft";
 import Profile from "./pages/Profile/Profile";
 import Details from "./pages/Details";
 import Home from "./components/Home/Home";
+import { useNFTMarketplace } from "./context/NFTMarketplaceContext";
+import { useEffect } from "react";
 
 export default function App() {
- 
+
+  const { isWalletConnected } = useNFTMarketplace();
+  useEffect(() => {
+    isWalletConnected();
+  }, []);
   return (
     <div className="bg-black">
       <Navbar />

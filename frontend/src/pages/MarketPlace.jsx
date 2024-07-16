@@ -8,14 +8,11 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Cards from '../components/Cards';
 import { Link } from 'react-router-dom';
 import {motion} from 'framer-motion';
-import { useNFTMarketplace } from '../context/NFTMarketplaceContext';
 
 const MarketPlace = () => {
   // const swiperRef = useRef(null);
-  const { structuredNfts } = useNFTMarketplace();
   useEffect(() => {
     window.scrollTo(0,0);
-    structuredNfts;
   }, []);
 
   return (
