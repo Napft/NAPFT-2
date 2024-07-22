@@ -8,6 +8,7 @@ import Owned from "./pages/Owned";
 import MintNft from "./pages/MintNft";
 import Profile from "./pages/Profile/Profile";
 import Details from "./pages/Details";
+import Thankspage from "./pages/ThankYouPage/Thankspage";
 import Home from "./components/Home/Home";
 import { useNFTMarketplace } from "./context/NFTMarketplaceContext";
 import { useEffect } from "react";
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/ownedNFTS" element={<Owned />}></Route>
         <Route path="/details" element={<Details />}></Route>
+        <Route path="/thankyou" element={<Thankspage />}></Route>
       </Routes>
       <Footer />
     </div>
