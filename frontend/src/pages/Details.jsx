@@ -104,7 +104,7 @@ const Details = () => {
             </div>
 
             <div className="innerDesc">
-              <p>This is a NFT</p>
+              {/* <p>This is a NFT</p> */}
             </div>
           </div>
           <div className="priceDiv">
