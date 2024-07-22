@@ -820,3 +820,6 @@ export const abi = [
     "type": "function"
   }
 ]
+
+// Thirdweb Client ID = 1f71f61180e6c8ab15e9ee5dd5ce9a7d
+// Thirdweb Secret Key = hvOAppfyUpUTE7f0snFbWugBAvqnSQU3R1LP69Kb9TUB-B0UiUIyiV8wOh78jGCI6L6QTPoxzfls9ISREjB3Qg
