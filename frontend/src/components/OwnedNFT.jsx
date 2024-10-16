@@ -15,7 +15,7 @@ const OwnedNFT = ({ nft , own }) => {
     NFT_token_ID,
     is_public,
   } = nft;
-
+  
   const latestPrice = price_timeline.length ? price_timeline[price_timeline.length - 1].price : 'N/A';
 
   if(own.toLowerCase() !== owner.toLowerCase()){
@@ -24,8 +24,6 @@ const OwnedNFT = ({ nft , own }) => {
 
   return (
        <>
-       
-    
       <motion.div
       whileHover={{ y: 10 }}
       transition={{ type: "spring", bounce: 0.8 }}

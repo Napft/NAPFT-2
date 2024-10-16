@@ -5,6 +5,7 @@ import FeaturedNfts from "./FeaturedNfts";
 import HomeAboutus from "./HomeAboutus";
 import Procedure from "./Procedure";
 import Newsletter from "./Newsletter";
+import Contactform from "./Contact2/Contactform"
 const Home = () => {
   return (
     <div className="parentDiv">
@@ -40,7 +41,7 @@ const Home = () => {
         <FeaturedNfts />
       </div>
       <div className="Newsletter">
-        <Newsletter />
+        <Contactform />
       </div>
     </div>
   );

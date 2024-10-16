@@ -297,7 +297,8 @@ else{
 
   const buyNFT = async (tokenId) => {
 
-    if(connectedAccount){
+    if (connectedAccount) {
+      // alert(connectedAccount);
       try {
       console.log(contract);
       console.log(signer);
