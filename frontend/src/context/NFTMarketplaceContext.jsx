@@ -2,6 +2,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { toast } from "react-hot-toast";
+// import {useNavigate } from 'react-router-dom'
 import axios from "axios";
 import PropTypes from 'prop-types';
 import {
@@ -27,7 +28,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const [myNfts, setMyNfts] = useState([])
   // eslint-disable-next-line no-unused-vars
   const [connectedWalletId, setConnectedWalletId] = useState("");
-
+  // const navigate = useNavigate();
   const getAlchemyProvider = async () => {
     try {
       const alchemyProvider =  new ethers.AlchemyProvider(137, import.meta.env.VITE_ALCHEMY_API_KEY);
@@ -295,8 +296,10 @@ else{
 };
 
   const buyNFT = async (tokenId) => {
-    if(connectedAccount){
-    try {
+
+    if (connectedAccount) {
+      // alert(connectedAccount);
+      try {
       console.log(contract);
       console.log(signer);
       const newContract = await contract.connect(signer);
@@ -304,9 +307,10 @@ else{
       console.log(price.toString());
       const tx = await newContract.buy(tokenId, { value: price });
       console.log(tx);
-      toast.success("You bought NFT")
-      // Redirect to the owned NFT page
-      // window.location.href = '/ownedNFTS';
+      toast.success("You bought NFT");
+      // navigate("/thankyou");
+      // Redirect to the Thankyou page
+      window.location.href = '/thankyou';
     } catch (error) {
       console.error(error);
       if (error.code === -32603 || error.data?.code === -32000) {

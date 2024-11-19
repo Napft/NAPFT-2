@@ -406,12 +406,14 @@ h3 {
     width: 100%;
     margin: 10px;
   }
-
+  .nftname{
+    font-size: 30px;
+  }
   .desc {
-    width: 90%;
+    width: 100%;
   }
   .imageDiv {
-    width: 75% !important;
+    width: 80% !important;
   }
   .historyDiv {
   }

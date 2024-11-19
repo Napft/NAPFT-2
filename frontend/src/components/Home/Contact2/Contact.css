@@ -1,0 +1,44 @@
+#contactus{
+    /* margin-bottom: 20% !important; */
+    /* padding-bottom: 20% !important; */
+}
+.btn-dark {
+  padding: 10px 20px;
+  width: 20%;
+  margin: 0 auto;
+  background-color: #000 !important;
+  border: none;
+  border-radius: 5px;
+}
+.btn:hover{
+  padding: 10px 20px;
+  width: 24%;
+  margin: 0 auto;
+  background-color: #000 !important;
+  border: none;
+  border-radius: 5px;
+}
+
+
+@media (min-width:360px){
+  
+}
+
+@media (max-width:500px){
+  .btn-dark {
+  padding: 10px 20px;
+  width: 100% !important;
+  margin: 0 auto;
+  background-color: #000 !important;
+  border: none;
+  border-radius: 5px;
+}
+.btn:hover{
+  padding: 10px 20px;
+  width: 24%;
+  margin: 0 auto;
+  background-color: #eb3e3e !important;
+  border: none;
+  border-radius: 5px;
+}
+}
