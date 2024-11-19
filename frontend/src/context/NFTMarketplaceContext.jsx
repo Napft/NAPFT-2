@@ -248,7 +248,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
     if (connectedAccount) {
       try {
       const newContract = contract.connect(signer);
-      const tx = await newContract.creatToken(IpfsHash, ethers.parseEther(`${price}`), royalityfee);
+      const tx = await newContract.creatToken(IpfsHash, ethers.utils.parseEther(`${price}`), royalityfee);
       const rc = await tx.wait();
       console.log(rc)
       console.log(rc.logs[0].args[2].toString())
