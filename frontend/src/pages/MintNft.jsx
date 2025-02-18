@@ -123,7 +123,7 @@ const MintNft = () => {
     setLoading(true);
     if(loading){
       toast.loading("Minting NFT")
-    };
+    }
     try {
       
       const formData = new FormData();
